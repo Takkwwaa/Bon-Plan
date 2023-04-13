@@ -142,3 +142,28 @@
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
 }
+@layer components {
+  .show-navbar {
+    animation: show 1s ease-in-out forwards;
+  }
+  .hide-navbar {
+    animation: hide 1s ease-in-out forwards;
+  }
+  /* ... */
+  @keyframes show {
+    0% {
+      translate: -100% 0;
+    }
+    100% {
+      translate: 0 0;
+    }
+  }
+  @keyframes hide {
+    0% {
+      translate: 0 0;
+    }
+    100% {
+      translate: -100% 0;
+    }
+  }
+}

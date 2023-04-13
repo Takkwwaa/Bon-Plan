@@ -5,12 +5,12 @@ import axios from "../axios";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { ToastContainer, toast } from "react-toastify";
+import { ErrorMessage } from "../components";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignupStore = () => {
   const REGISTER_URL = "/api/stores";
-  const [phone, setphone] = useState("");
-  const [name, setname] = useState("");
-  const [description, setDescription] = useState("");
   const [violations, setViolations] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -19,6 +19,9 @@ const SignupStore = () => {
     .shape({
       email: yup.string().email().required(),
       password: yup.string().required().min(7),
+      description: yup.string().required().min(10),
+      name: yup.string().required().min(3),
+      phone: yup.string().required().min(8).max(8),
     })
     .required();
 
@@ -55,13 +58,21 @@ const SignupStore = () => {
       .catch((error) => {
         if (error?.response?.status === 422) {
           setViolations(error?.response?.data?.violations);
+          notify();
         }
         setLoading(false);
         console.log("error", error);
       });
+    const notify = () =>
+      toast.error("haha", {
+        position: "top-start",
+        theme: "light",
+        autoClose: 3000,
+      });
   };
   return (
     <>
+      <ToastContainer />
       <img
         src={blacklogo}
         className="absolute flex justify-start align-top sm:w-[180px] sm:h-[70px] h-12 w-28 z-20 mt-[8px] ml-3 "
@@ -79,31 +90,46 @@ const SignupStore = () => {
               >
                 {console.log("errr", errors, violations)}
                 <div className="flex flex-row justify-between gap-2 ">
-                  <input
-                    type="text"
-                    className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
-                    id="name"
-                    placeholder="Name"
-                    onChange={(e) => setname(e.target.value)}
-                    autoComplete="off"
-                  />
-                  <input
-                    type="text"
-                    className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
-                    id="phone"
-                    placeholder="phone"
-                    onChange={(e) => setphone(parseInt(e.target.value))}
-                    autoComplete="off"
-                  />
+                  <div className=" w-1/2">
+                    <input
+                      type="text"
+                      className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
+                      id="name"
+                      placeholder="Name"
+                      {...register("name")}
+                      autoComplete="off"
+                    />
+                    {errors?.name ? (
+                      <ErrorMessage text={errors?.name?.message} />
+                    ) : null}
+                  </div>
+                  <div className=" w-1/2">
+                    <input
+                      type="text"
+                      className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
+                      id="phone"
+                      placeholder="phone"
+                      {...register("phone")}
+                      autoComplete="off"
+                    />
+                    {errors?.phone ? (
+                      <ErrorMessage text={errors?.phone?.message} />
+                    ) : null}
+                  </div>
                 </div>
-                <textarea
-                  type="text"
-                  className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
-                  id="description"
-                  placeholder="Describe your store"
-                  onChange={(e) => setDescription(e.target.value)}
-                  autoComplete="off"
-                />
+                <div>
+                  <textarea
+                    type="text"
+                    className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
+                    id="description"
+                    placeholder="Describe your store"
+                    {...register("description")}
+                    autoComplete="off"
+                  />
+                  {errors?.description ? (
+                    <ErrorMessage text={errors?.description?.message} />
+                  ) : null}
+                </div>
                 <div>
                   <input
                     className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
@@ -111,7 +137,7 @@ const SignupStore = () => {
                     {...register("email")}
                   />
                   {errors?.email ? (
-                    <p className="text-primary">{errors?.email?.message}</p>
+                    <ErrorMessage text={errors?.email?.message} />
                   ) : null}
                 </div>
                 <div>
@@ -121,16 +147,9 @@ const SignupStore = () => {
                     {...register("password")}
                   />
                   {errors?.password ? (
-                    <p className="text-primary">{errors?.password?.message}</p>
+                    <ErrorMessage text={errors?.password?.message} />
                   ) : null}
                 </div>
-                {/* {violations?.length
-                  ? violations?.map(({ propertyPath, message }) => (
-                      <p className="text-primary">
-                        The field : {propertyPath} : {message}
-                      </p>
-                    ))
-                  : null} */}
                 {loading && (
                   <div
                     role="status"
@@ -138,7 +157,7 @@ const SignupStore = () => {
                   >
                     <svg
                       aria-hidden="true"
-                      class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-primary"
+                      className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-primary"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -157,11 +176,21 @@ const SignupStore = () => {
                 )}
                 <input
                   disabled={loading}
+                  on
                   type="submit"
                   className={`${
                     loading ? "hidden" : "block"
                   } px-8 align-middle rounded w-full bg-primary py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg  `}
                 />
+                {/* {violations?.length
+                  ? violations?.map(({ propertyPath, message }) => (
+                   
+                  ))
+                  : null} */}
+                {/* {violations?.length
+                  ? violations?.map(({ propertyPath, message }) => (
+                    )
+                  : null} */}
                 <p className="font-poppins text-white text-xs pt-4 pb-3 flex justify-center ">
                   You have an account ?{" "}
                   <Link to="/store/Login">

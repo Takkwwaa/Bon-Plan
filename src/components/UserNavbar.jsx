@@ -1,11 +1,10 @@
 import React from "react";
-import { close, Logo, menu, user } from "../assets";
-import { useState } from "react";
+import { Logo, user, notification } from "../assets";
+
 import Searchbar from "./Searchbar.jsx";
+import { Link } from "react-router-dom";
 
 const UserNavbar = () => {
-  const [toggle, setToggle] = useState(false);
-
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar ">
       <img
@@ -17,60 +16,50 @@ const UserNavbar = () => {
       <ul className="list-none sm:flex hidden justify-end items-center text-white ">
         <li
           className={
-            "font-poppins font-normal cursor-pointer text-[18px] mr-10 border-none"
+            "font-poppins font-normal cursor-pointer text-[16px] mr-10 border-none flex justify-center items-center flex-row gap-2"
           }
         >
-          <button>Notifications</button>
+          <button>
+            <img src={notification} className="rounded-full w-6 h-6" />
+          </button>
         </li>
         <li
           className={
-            "font-poppins font-normal cursor-pointer text-[18px] mr-0 border-none flex justify-center items-center flex-row gap-3"
+            "font-poppins font-normal cursor-pointer text-[16px] mr-0 border-none flex justify-center items-center flex-row gap-2"
           }
         >
-          <button>Profile</button>
-          <img
-            src={user}
-            className=" rounded-full border border-white w-13 h-13 p-1"
-          />
+          <button>
+            <img
+              src={user}
+              className=" rounded-full border border-white w-12 h-12 p-1"
+            />
+          </button>
         </li>
       </ul>
-      <div className="sm:hidden flex  justify-end items-center">
-        <img
-          src={toggle ? close : menu}
-          alt="menu"
-          className="w-[26px] h-[26px] object-contain mr-10 "
-          onClick={() => setToggle((prev) => !prev)}
-        />
-      </div>
-      <div
-        className={`${
-          toggle ? "flex" : "hidden"
-        } p-6 bg-gradient-to-b from-[#787878] to-transparent  absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
-      >
-        <ul className="list-none flex justify-end items-start flex-1 flex-col">
-          <li
-            className={
-              "font-poppins font-normal cursor-pointer text-[16px] text-black mb-4"
-            }
-          >
-            <a href={""}>Contact Us</a>
-          </li>
-          <li
-            className={
-              "font-poppins font-normal cursor-pointer text-[16px] text-black mb-4 border-none"
-            }
-          >
-            <button>Login</button>
-          </li>
-          <li
-            className={
-              "font-poppins font-normal cursor-pointer text-[16px] text-black mb-0 border-none"
-            }
-          >
-            <button>Sign up</button>
-          </li>
-        </ul>
-      </div>
+      <ul className="list-none sm:hidden flex justify-center items-center text-white gap-3">
+        <li
+          className={
+            "font-poppins font-normal cursor-pointer text-[16px] text-black"
+          }
+        >
+          <button>
+            {" "}
+            <img src={notification} className="rounded-full w-7 h-7 " />
+          </button>
+        </li>
+        <li
+          className={
+            "font-poppins font-normal cursor-pointer text-[16px] text-black  border-none"
+          }
+        >
+          <Link to="/profile">
+            <img
+              src={user}
+              className=" rounded-full border border-white w-10 h-10 p-1"
+            />
+          </Link>
+        </li>
+      </ul>
     </nav>
   );
 };

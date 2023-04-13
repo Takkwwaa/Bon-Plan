@@ -5,6 +5,20 @@ module.exports = {
   mode: "jit",
   theme: {
     extend: {
+      keyframes: {
+        showNav: {
+          "0%": { translate: "-100% 0" },
+          "100%": { translate: "0 0" },
+        },
+        hideNav: {
+          "0%": { translate: "0 0" },
+          "100%": { translate: "-100% 0" },
+        },
+      },
+      animation: {
+        showNav: "showNav 1s ease-in-out forwards",
+        hideNav: "hideNav 1s ease-in-out forwards",
+      },
       colors: {
         primary: "#FF4747",
         secondary: "#E2E3E0",

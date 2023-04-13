@@ -26,6 +26,8 @@ import linkedin from "./linkedin.svg";
 import email from "./email.svg";
 import map from "./map.svg";
 import phone from "./phone.svg";
+import notification from "./notification.svg";
+import blackuser from "./blackuser.svg";
 
 export {
   Logo,
@@ -56,4 +58,6 @@ export {
   map,
   phone,
   userr,
+  blackuser,
+  notification,
 };

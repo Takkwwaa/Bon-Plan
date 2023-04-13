@@ -8,6 +8,11 @@ import Footer from "./Footer.jsx";
 import UserNavbar from "./UserNavbar.jsx";
 import LogLayout from "./LogLayout.jsx";
 import MainLayout from "./MainLayout.jsx";
+import ErrorMessage from "./ErrorMessage.jsx";
+import ErrorToast from "./ErrorToast.jsx";
+import Sidebar from "./Sidebar.jsx";
+import DropDownLocalisation from "./DropDownLocalisation.jsx";
+import Content from "./Content.jsx";
 
 export {
   Hero,
@@ -20,4 +25,9 @@ export {
   UserNavbar,
   LogLayout,
   MainLayout,
+  ErrorMessage,
+  ErrorToast,
+  Content,
+  Sidebar,
+  DropDownLocalisation,
 };

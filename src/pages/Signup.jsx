@@ -2,25 +2,41 @@ import { Link } from "react-router-dom";
 import { blacklogo, signup } from "../assets";
 import { useState, useRef, useEffect } from "react";
 import axios from "../axios";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ErrorMessage } from "../components";
 
 const Signup = () => {
-  const userRef = useRef();
-  const errRef = useRef();
-
   const REGISTER_URL = "/api/users";
-  const [username, setusername] = useState("");
-  const [password, setpassword] = useState("");
-  const [firstname, setfirstname] = useState("");
-  const [lastname, setlastname] = useState("");
-  const [email, setemail] = useState("");
-  const [birthdate, setbirthdate] = useState("");
-  useEffect(() => {
-    console.log(username);
-  }, [username, password, firstname, lastname, email, birthdate]);
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
+  const [violations, setViolations] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const schema = yup
+    .object()
+    .shape({
+      email: yup.string().email().required(),
+      password: yup.string().required().min(7),
+      birthdate: yup.date().required(),
+      firstname: yup.string().required().min(3),
+      lastname: yup.string().required().min(3),
+      username: yup.string().required().min(4),
+    })
+    .required();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const handleOnSubmit = () => {
+    const { email, password, firstname, lastname, birthdate, username } =
+      getValues();
+    const response = axios
+      .post(
         REGISTER_URL,
         JSON.stringify({
           user_name: username,
@@ -31,10 +47,19 @@ const Signup = () => {
           password,
         }),
         { headers: { "Content-Type": "application/json" } }
-      );
-    } catch (error) {
-      console.log(error);
-    }
+      )
+      .then((response) => {
+        setLoading(false);
+
+        console.log("success", response.data);
+      })
+      .catch((error) => {
+        if (error?.response?.status === 422) {
+          setViolations(error?.response?.data?.violations);
+        }
+        setLoading(false);
+        console.log("error", error);
+      });
   };
 
   return (
@@ -51,64 +76,93 @@ const Signup = () => {
                 Sign Up
               </h1>
               <form
-                className=" flex flex-col justify-center px-4 "
-                onSubmit={handleSubmit}
+                className=" flex flex-col justify-center gap-4 px-2 mt-2 "
+                onSubmit={handleSubmit(handleOnSubmit)}
               >
-                <div className="flex flex-row justify-between gap-2 mb-6">
-                  <input
-                    type="text"
-                    className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
-                    id="firstname"
-                    placeholder="First Name"
-                    onChange={(e) => setfirstname(e.target.value)}
-                    autoComplete="off"
-                  />
-                  <input
-                    type="text"
-                    className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
-                    id="lastname"
-                    placeholder="Last Name"
-                    onChange={(e) => setlastname(e.target.value)}
-                    autoComplete="off"
-                  />
+                <div className="flex flex-row justify-between gap-2 ">
+                  <div className=" w-1/2">
+                    <input
+                      type="text"
+                      className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
+                      id="firstname"
+                      placeholder="First Name"
+                      {...register("firstname")}
+                      autoComplete="off"
+                    />
+                    {errors?.firstname ? (
+                      <ErrorMessage text={errors?.firstname?.message} />
+                    ) : null}
+                  </div>
+                  <div className="w-1/2">
+                    <input
+                      type="text"
+                      className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
+                      id="lastname"
+                      placeholder="Last Name"
+                      {...register("lastname")}
+                      autoComplete="off"
+                    />
+                    {errors?.lastname ? (
+                      <ErrorMessage text={errors?.lastname?.message} />
+                    ) : null}
+                  </div>
                 </div>
-                <div className="flex flex-row justify-between gap-2 mb-6">
+                <div className="flex flex-row justify-between gap-2 ">
+                  <div className=" w-1/2">
+                    <input
+                      type="text"
+                      className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
+                      id="username"
+                      placeholder="User Name"
+                      {...register("lastname")}
+                      autoComplete="off"
+                    />
+                    {errors?.username ? (
+                      <ErrorMessage text={errors?.username?.message} />
+                    ) : null}
+                  </div>
+                  <div className=" w-1/2">
+                    <input
+                      type="date"
+                      className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
+                      id="birthdate"
+                      placeholder="Birth Date"
+                      {...register("birthdate")}
+                    />
+                    {errors?.username ? (
+                      <ErrorMessage text={errors?.username?.message} />
+                    ) : null}
+                  </div>
+                </div>
+                <div>
                   <input
-                    type="text"
-                    className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
-                    id="username"
-                    placeholder="User Name"
-                    onChange={(e) => setusername(e.target.value)}
+                    type="email"
+                    className=" pl-1  text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
+                    id="email"
+                    placeholder="Enter email"
+                    {...register("email")}
                     autoComplete="off"
                   />
-                  <input
-                    type="date"
-                    className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
-                    id="birthdate"
-                    placeholder="Birth Date"
-                    onChange={(e) => setbirthdate(e.target.value)}
-                  />
+                  {errors?.email ? (
+                    <ErrorMessage text={errors?.email?.message} />
+                  ) : null}
                 </div>
-                <input
-                  type="email"
-                  className=" pl-1 mb-6 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
-                  id="email"
-                  placeholder="Enter email"
-                  onChange={(e) => setemail(e.target.value)}
-                  autoComplete="off"
-                />
-                <input
-                  type="password"
-                  className=" pl-1 mb-12 block text-sm min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
-                  id="password"
-                  placeholder="Password"
-                  onChange={(e) => setpassword(e.target.value)}
-                />
-
+                <div>
+                  <input
+                    type="password"
+                    className=" pl-1 block text-sm min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
+                    id="password"
+                    placeholder="Password"
+                    {...register("password")}
+                  />
+                  {errors?.password ? (
+                    <ErrorMessage text={errors?.password?.message} />
+                  ) : null}
+                </div>
                 <button
                   type="submit"
                   className={`${
-                    loading ? "flex" : "hidden"
+                    loading ? "hidden" : "block"
                   } px-8 align-middle rounded w-full bg-primary py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg `}
                 >
                   Submit
