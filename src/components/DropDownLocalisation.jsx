@@ -12,11 +12,12 @@ const DropDownLocalisation = () => {
   };
 
   return (
-    <>
-      <div className=" w-1/2 text-white">
+    <div className="m-0 flex gap-4">
+      <div className=" w-[85%] text-white ">
         <Select
           options={options}
           onChange={handleSelect}
+          placeholder="City"
           styles={{
             option: (provided, state) => ({
               ...provided,
@@ -48,6 +49,11 @@ const DropDownLocalisation = () => {
               ...provided,
               backgroundColor: "black",
             }),
+            menuList: (provided) => ({
+              ...provided,
+              maxHeight: 45,
+              border: "1px solid #FFFFFF",
+            }),
             input: (provided) => ({
               ...provided,
               color: "white",
@@ -56,7 +62,7 @@ const DropDownLocalisation = () => {
         />
       </div>{" "}
       {showregion && <DropDownRegions city={region} />}
-    </>
+    </div>
   );
 };
 

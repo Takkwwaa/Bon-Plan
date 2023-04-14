@@ -25,6 +25,7 @@ module.exports = {
         line: "#817A5D",
       },
       fontFamily: {
+        dance: ["Dancing Script", "cursive"],
         poppins: ["Poppins", "sans-serif"],
         mont: ["Montserrat", "sans-serif"],
         arimo: ["Arimo", "sans-serif"],

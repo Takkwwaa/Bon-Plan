@@ -1,12 +1,13 @@
 import styles from "../style.js";
+import Items from "./Items.jsx";
 const Content = () => {
   return (
-    <section className="flex flex-col sm:py-6 py-3 w">
+    <section className="flex flex-col sm:py-8 py-4 w">
       <div
-        className={` flex-grow ${styles.flexStart} flex-col xl:px-0 sm:px-14 px-4 `}
+        className={` xl:px-0 sm:px-14 px-4 flex flex-wrap justify-around flex-grow `}
       >
         {" "}
-        <p className="text-white">content</p>
+        <Items />
       </div>
     </section>
   );

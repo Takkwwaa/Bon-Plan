@@ -5,7 +5,6 @@ import DropDownLocalisation from "./DropDownLocalisation";
 
 const Sidebar = () => {
   const [toggle, setToggle] = useState(false);
-  const [regions, setRegions] = useState("");
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const ref = useRef();
   const [showsidebar, setShowSideBar] = useState(false);
@@ -28,9 +27,9 @@ const Sidebar = () => {
   }, [isDesktop]);
 
   return (
-    <div className=" relative h-screen w-full  ">
+    <div className=" relative h-screen sm:w-full w-0   ">
       <button
-        className=" bg-primary text-white p-4 rounded-tr-lg rounded-br-lg w-[50px] text-lg top-[5%] absolute z-10 block sm:hidden"
+        className=" bg-primary text-white p-2 rounded-tr-lg rounded-br-lg w-[30px] text-lg top-[5%] absolute z-10 block sm:hidden"
         onClick={handleClick}
       >
         <img
@@ -48,12 +47,19 @@ const Sidebar = () => {
         ref={ref}
         className={` z-[8] sm:animate-none sm:translate-x-[0] translate-x-[-100%] ${
           showsidebar && "translate-x-[0]"
-        } bg-[#101010] transition-all duration-300	 flex flex-col items-center justify-center gap-24 absolute w-[50vw] sm:w-[100%] h-[100%] top-0 left-[0%] border-r-[1px] border-white `}
+        } bg-[#101010] transition-all duration-300 pt-20 flex flex-col items-center justify-start gap-6 absolute w-[50vw] sm:w-[100%] h-[100%] top-0 left-[0%] border-r-[1px] border-white `}
       >
-        <h1 className=" font-arimo font-semibold text-2xl flex align-middle justify-center py-6 text-white tracking-widest ">
+        <h1 className=" font-dance text-5xl flex align-middle justify-center text-white ss:leading-[100.8px] leading-[75px]">
           Filter
         </h1>
-        <DropDownLocalisation />
+        <div className=" p-3 border border-primary rounded-md w-[85%] m-0 pb-14">
+          <h5 className="font-arimo text-lg text-white pb-3 ">Location :</h5>
+          <DropDownLocalisation />
+        </div>
+        <div className=" p-3 border border-primary rounded-md w-[85%] m-0 pb-14">
+          <h5 className="font-arimo text-lg text-white pb-3 ">Category :</h5>
+          <DropDownLocalisation />
+        </div>
       </div>
     </div>
   );

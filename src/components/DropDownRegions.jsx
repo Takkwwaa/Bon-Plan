@@ -10,9 +10,10 @@ export default function DropDownRegions(city) {
   const options = arr.table[city.city];
   console.log("region table :", options);
   return (
-    <div className=" w-1/2 text-white">
+    <div className=" w-[85%] text-white">
       <Select
         options={options}
+        placeholder="Region"
         styles={{
           option: (provided, state) => ({
             ...provided,
@@ -25,6 +26,11 @@ export default function DropDownRegions(city) {
               backgroundColor: "#FF4747",
               color: "white",
             },
+          }),
+          menuList: (provided) => ({
+            ...provided,
+            maxHeight: 45,
+            border: "1px solid #FFFFFF",
           }),
           control: (provided) => ({
             ...provided,

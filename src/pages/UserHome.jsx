@@ -13,11 +13,11 @@ const UserHome = () => {
         <hr className=" w-4/5 text-white" />
       </div>
       <div className="flex justify-start items-start">
-        <div className=" w-[20%]">
+        <div className=" sm:w-[20%] w-0 ">
           <Sidebar />
         </div>
         <hr />
-        <div className=" w-[80%] ">
+        <div className=" sm:w-[80%] w-full ">
           <Content />
         </div>
       </div>
