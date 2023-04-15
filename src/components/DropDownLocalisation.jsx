@@ -1,6 +1,6 @@
 import Select from "react-select";
-import React, { useState, useEffect } from "react";
-import { options, regions } from "../constants";
+import React, { useState } from "react";
+import { options } from "../constants";
 import DropDownRegions from "./DropDownRegions";
 
 const DropDownLocalisation = () => {

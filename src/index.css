@@ -6,7 +6,25 @@
 @tailwind components;
 @tailwind utilities;
 
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--secondary);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 10px;
+  border: 3px solid var(--primary);
+  height: 10px;
+}
+
 :root {
+  --primary: #ffffff;
+  --secondary: #101010;
   --black-gradient: linear-gradient(
     144.39deg,
     #ffffff -278.56%,

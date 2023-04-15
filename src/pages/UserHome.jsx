@@ -3,7 +3,7 @@ import styles from "../style";
 
 const UserHome = () => {
   return (
-    <div className="w-screeb overflow-hidden bg-[#101010] h-screen">
+    <div className=" w-screen overflow-auto bg-[#101010] h-screen">
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <UserNavbar />

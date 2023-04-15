@@ -13,7 +13,7 @@ import ErrorToast from "./ErrorToast.jsx";
 import Sidebar from "./Sidebar.jsx";
 import DropDownLocalisation from "./DropDownLocalisation.jsx";
 import Content from "./Content.jsx";
-
+import StoreCard from "./StoreCard.jsx";
 export {
   Hero,
   Navbar,
@@ -30,4 +30,5 @@ export {
   Content,
   Sidebar,
   DropDownLocalisation,
+  StoreCard,
 };

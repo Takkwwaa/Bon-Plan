@@ -1,13 +1,13 @@
-import styles from "../style.js";
-import Items from "./Items.jsx";
+import StoreCard from "./StoreCard";
+
 const Content = () => {
   return (
-    <section className="flex flex-col sm:py-8 py-4 w">
+    <section className="flex flex-col sm:py-8 py-4 w-full h-screen">
       <div
-        className={` xl:px-0 sm:px-14 px-4 flex flex-wrap justify-around flex-grow `}
+        className={`flex flex-wrap sm:gap-6 gap-3 justify-center flex-grow `}
       >
         {" "}
-        <Items />
+        <StoreCard />
       </div>
     </section>
   );

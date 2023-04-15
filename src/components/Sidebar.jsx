@@ -27,7 +27,7 @@ const Sidebar = () => {
   }, [isDesktop]);
 
   return (
-    <div className=" relative h-screen sm:w-full w-0   ">
+    <div className=" relative h-screen sm:w-full w-0 ">
       <button
         className=" bg-primary text-white p-2 rounded-tr-lg rounded-br-lg w-[30px] text-lg top-[5%] absolute z-10 block sm:hidden"
         onClick={handleClick}
