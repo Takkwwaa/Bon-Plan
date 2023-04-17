@@ -1,12 +1,12 @@
 import React from "react";
-import { Logo, user, notification } from "../assets";
+import { Logo, user, notification, home } from "../assets";
 
 import Searchbar from "./Searchbar.jsx";
 import { Link } from "react-router-dom";
 
-const UserNavbar = () => {
+const UserNavbar = (props) => {
   return (
-    <nav className="w-full flex py-6 justify-between items-center navbar ">
+    <nav className="w-full bg-secondary flex py-6 justify-between items-center navbar ">
       <img
         src={Logo}
         alt="BonPLan"
@@ -25,15 +25,24 @@ const UserNavbar = () => {
         </li>
         <li
           className={
+            props.showhome === "true"
+              ? `font-poppins font-normal cursor-pointer text-[16px] mr-10 border-none flex justify-center items-center flex-row gap-2`
+              : `hidden `
+          }
+        >
+          <img src={home} alt="home" className="rounded-full w-8 h-8" />
+        </li>
+        <li
+          className={
             "font-poppins font-normal cursor-pointer text-[16px] mr-0 border-none flex justify-center items-center flex-row gap-2"
           }
         >
-          <button>
+          <Link to="/profile">
             <img
               src={user}
               className=" rounded-full border border-white w-12 h-12 p-1"
             />
-          </button>
+          </Link>
         </li>
       </ul>
       <ul className="list-none sm:hidden flex justify-center items-center text-white gap-3">

@@ -1,25 +1,24 @@
-import { Content, Footer, Hero, Sidebar, UserNavbar } from "../components";
+import { Content, Sidebar, UserNavbar } from "../components";
 import styles from "../style";
 
 const UserHome = () => {
   return (
-    <div className=" w-screen overflow-auto bg-[#101010] h-screen">
-      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-        <div className={`${styles.boxWidth}`}>
-          <UserNavbar />
+    <div className=" w-screen bg-[#101010] h-screen relative overflow-x-hidden">
+      <div
+        className={`${styles.paddingX} ${styles.flexCenter} bg-secondary z-20 top-0 sticky`}
+      >
+        <div className={`w-full `}>
+          <UserNavbar showhome="false" />
         </div>
       </div>
-      <div className=" flex justify-center items-center">
+      <div className=" flex justify-center items-center bg-secondary">
         <hr className=" w-4/5 text-white" />
       </div>
-      <div className="flex justify-start items-start">
-        <div className=" sm:w-[20%] w-0 ">
-          <Sidebar />
-        </div>
-        <hr />
-        <div className=" sm:w-[80%] w-full ">
-          <Content />
-        </div>
+      <div className=" sm:w-[20%] w-0 m-0 p-0 z-50 fixed">
+        <Sidebar />
+      </div>
+      <div className=" sm:w-[80%] w-full right-0 absolute">
+        <Content />
       </div>
       {/* <div className={`${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>

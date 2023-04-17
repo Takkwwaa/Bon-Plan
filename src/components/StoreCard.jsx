@@ -32,7 +32,7 @@ const StoreCard = () => {
             <div className="font-poppins flex flex-row justify-between items-center sm:text-sm text-xs">
               <p>{item.type}</p>
               <div className="flex p-2">
-                <img src={star} alt="" className=" w-5 h-5" />{" "}
+                <img src={star} alt="" className=" sm:w-4 sm:h-4 w-3 h-3 " />{" "}
                 <p className="w-5 h-5">{item.rate}</p>
               </div>
             </div>

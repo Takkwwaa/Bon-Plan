@@ -28,6 +28,7 @@ import map from "./map.svg";
 import phone from "./phone.svg";
 import notification from "./notification.svg";
 import blackuser from "./blackuser.svg";
+import home from "./home.svg";
 
 export {
   Logo,
@@ -60,4 +61,5 @@ export {
   userr,
   blackuser,
   notification,
+  home,
 };
