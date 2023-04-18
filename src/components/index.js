@@ -14,6 +14,8 @@ import Sidebar from "./Sidebar.jsx";
 import DropDownLocalisation from "./DropDownLocalisation.jsx";
 import Content from "./Content.jsx";
 import StoreCard from "./StoreCard.jsx";
+import UserInfoUpdate from "./UserInfoUpdate.jsx";
+
 export {
   Hero,
   Navbar,
@@ -31,4 +33,5 @@ export {
   Sidebar,
   DropDownLocalisation,
   StoreCard,
+  UserInfoUpdate,
 };
