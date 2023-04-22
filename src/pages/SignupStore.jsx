@@ -13,6 +13,7 @@ const SignupStore = () => {
   const REGISTER_URL = "/api/stores";
   const [violations, setViolations] = useState("");
   const [loading, setLoading] = useState(false);
+  const [Errors, setErrors] = useState("");
 
   const schema = yup
     .object()
@@ -64,8 +65,8 @@ const SignupStore = () => {
         console.log("error", error);
       });
     const notify = () =>
-      toast.error("haha", {
-        position: "top-start",
+      toast.error(violations[0].message, {
+        position: "top-end",
         theme: "light",
         autoClose: 3000,
       });
@@ -183,9 +184,9 @@ const SignupStore = () => {
                   } px-8 align-middle rounded w-full bg-primary py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg  `}
                 />
                 {/* {violations?.length
-                  ? violations?.map(({ propertyPath, message }) => (
-                   
-                  ))
+                  ? violations?.map(({ propertyPath, message }) =>
+                      setErrors(Errors + { message })
+                    )
                   : null} */}
                 {/* {violations?.length
                   ? violations?.map(({ propertyPath, message }) => (

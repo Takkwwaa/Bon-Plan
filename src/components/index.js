@@ -1,6 +1,6 @@
 import Hero from "./Hero.jsx";
 import Navbar from "./Navbar.jsx";
-import Favourite from "./Favourite.jsx";
+import ItemsList from "./ItemsList.jsx";
 import Items from "./Items.jsx";
 import ConnectPopup from "./ConnectPopup.jsx";
 import Alert from "./Alert.jsx";
@@ -19,7 +19,7 @@ import UserInfoUpdate from "./UserInfoUpdate.jsx";
 export {
   Hero,
   Navbar,
-  Favourite,
+  ItemsList,
   Items,
   ConnectPopup,
   Alert,

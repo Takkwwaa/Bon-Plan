@@ -1,5 +1,5 @@
 import styles from "../style";
-import { UserInfoUpdate, UserNavbar } from "../components";
+import { ItemsList, UserInfoUpdate, UserNavbar } from "../components";
 import { user } from "../assets";
 import React, { useState } from "react";
 
@@ -14,7 +14,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className=" w-screen bg-[#101010] h-screen ">
+    <div className=" w-screen bg-[#101010] h-screen  overflow-x-hidden ">
       <div className={`${styles.paddingX} ${styles.flexCenter} bg-secondary `}>
         <div className={`w-full `}>
           <UserNavbar showhome="true" />
@@ -63,6 +63,7 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
+      <ItemsList />
     </div>
   );
 };

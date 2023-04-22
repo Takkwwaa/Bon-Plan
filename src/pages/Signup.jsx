@@ -39,12 +39,12 @@ const Signup = () => {
       .post(
         REGISTER_URL,
         JSON.stringify({
-          user_name: username,
-          first_name: firstname,
-          last_name: lastname,
-          birth_date: birthdate,
+          username: username,
+          firstname: firstname,
+          lastname: lastname,
+          birthdate: birthdate,
           email,
-          password,
+          plainPassword: password,
         }),
         { headers: { "Content-Type": "application/json" } }
       )
@@ -114,7 +114,7 @@ const Signup = () => {
                       className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
                       id="username"
                       placeholder="User Name"
-                      {...register("lastname")}
+                      {...register("username")}
                       autoComplete="off"
                     />
                     {errors?.username ? (
@@ -130,7 +130,7 @@ const Signup = () => {
                       {...register("birthdate")}
                     />
                     {errors?.username ? (
-                      <ErrorMessage text={errors?.username?.message} />
+                      <ErrorMessage text={errors?.birthdate?.message} />
                     ) : null}
                   </div>
                 </div>

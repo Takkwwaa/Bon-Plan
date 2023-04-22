@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero, Favourite, Navbar, Footer } from "../components";
+import { Hero, ItemsList, Navbar, Footer } from "../components";
 import styles from "../style";
 import { Outlet } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const Home = () => {
       </div>
       <div className={`${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Favourite />
+          <ItemsList />
         </div>
       </div>
       <Footer />

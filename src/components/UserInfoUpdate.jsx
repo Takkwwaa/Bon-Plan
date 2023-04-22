@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { store, userr, close } from "../assets";
-import { Link } from "react-router-dom";
 import DropDownLocalisation from "./DropDownLocalisation";
 
 const UserInfoUpdate = (props) => {
@@ -50,7 +49,7 @@ const UserInfoUpdate = (props) => {
               />
               <label
                 className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-white"
-                for="inlineRadio1"
+                htmlFor="inlineRadio1"
               >
                 Male
               </label>
@@ -67,7 +66,7 @@ const UserInfoUpdate = (props) => {
               />
               <label
                 className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-white"
-                for="inlineRadio2"
+                htmlFor="inlineRadio2"
               >
                 Female
               </label>

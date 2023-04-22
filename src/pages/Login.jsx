@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
 import { login, blacklogo } from "../assets";
+import React, { useState } from "react";
+import authService from "../authService";
+import axios from "../axios";
+
 const Login = () => {
+  const [loading, setLoading] = useState(false);
+  const [password, setpassword] = useState("");
+  const [email, setemail] = useState("");
+  console.log(password, "fjrkiguh", email);
+  const handleOnSubmit = async (event) => {
+    event.preventDefault();
+    const token = await authService.login(email, password);
+  };
+
   return (
     <>
       <img
@@ -14,22 +27,29 @@ const Login = () => {
               <h1 className=" font-arimo font-bold text-2xl flex align-middle justify-center py-8 text-white tracking-widest ">
                 Login
               </h1>
-              <form className=" flex flex-col justify-center px-8 ">
+              <form
+                className=" flex flex-col justify-center px-8 "
+                onSubmit={handleOnSubmit}
+              >
                 <input
                   type="email"
                   className=" pl-1 mb-6 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
                   id="exampleInputEmail1"
                   placeholder="Enter email"
+                  onChange={(e) => setemail(e.target.value)}
                 />
                 <input
                   type="password"
                   className=" pl-1 mb-12 block text-sm min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
                   id="exampleInputPassword1"
                   placeholder="Password"
+                  onChange={(e) => setpassword(e.target.value)}
                 />
                 <button
                   type="submit"
-                  className="px-8 align-middle rounded w-full bg-primary py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg  "
+                  className={`${
+                    loading ? "hidden" : "block"
+                  } px-8 align-middle rounded w-full bg-primary py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg `}
                 >
                   Submit
                 </button>
