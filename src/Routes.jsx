@@ -9,6 +9,7 @@ import {
   UserProfile,
   Home,
 } from "./pages";
+import Logout from "./components/Logout.jsx";
 
 export const Unauthenticated = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ export const Authenticated = createBrowserRouter([
       {
         path: "/profile",
         element: <UserProfile />,
+      },
+      {
+        path: "/Logout",
+        element: <Logout />,
       },
     ],
   },

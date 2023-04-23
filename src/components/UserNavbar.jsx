@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Logo, user, notification, home } from "../assets";
 
 import Searchbar from "./Searchbar.jsx";
 import { Link } from "react-router-dom";
 
 const UserNavbar = (props) => {
+  const [toggle, setToggle] = useState(false);
   return (
     <nav className="w-full bg-secondary flex py-6 justify-between items-center navbar ">
       <img
@@ -41,12 +42,37 @@ const UserNavbar = (props) => {
             "font-poppins font-normal cursor-pointer text-[16px] mr-0 border-none flex justify-center items-center flex-row gap-2"
           }
         >
-          <Link to="/profile">
-            <img
-              src={user}
-              className=" rounded-full border border-white w-12 h-12 p-1"
-            />
-          </Link>
+          <img
+            src={user}
+            className=" rounded-full border border-white w-12 h-12 p-1"
+            onClick={() => setToggle((prev) => !prev)}
+          />
+          {toggle ? (
+            <div
+              className={`flex p-2 pl-4 bg-black border border-white absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+            >
+              <ul className="list-none flex justify-start items-start flex-1 flex-col">
+                <Link to="/profile">
+                  <li
+                    className={
+                      "flex flex-1 font-poppins font-normal cursor-pointer text-[16px] text-white mb-4 hover:border hover:border-white hover:bg-gray"
+                    }
+                  >
+                    Profile
+                  </li>
+                </Link>
+                <Link to="/Logout">
+                  <li
+                    className={
+                      "font-poppins font-normal cursor-pointer text-[16px] text-white mb-4"
+                    }
+                  >
+                    Logout
+                  </li>
+                </Link>
+              </ul>
+            </div>
+          ) : null}
         </li>
       </ul>
       <ul className="list-none sm:hidden flex justify-center items-center text-white gap-2">

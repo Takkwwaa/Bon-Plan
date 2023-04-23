@@ -77,7 +77,7 @@ const UserInfoUpdate = (props) => {
           </h5>
           <input
             type="text"
-            className=" pl-1 text-sm block min-h-[auto] w-full outline-primary outline-1 outline rounded border-0 bg-secondary py-[0.32rem] leading-[1.6] outline-none "
+            className=" text-white pl-1 text-sm block min-h-[auto] w-full outline-primary outline-1 outline rounded border-0 bg-secondary py-[0.32rem] leading-[1.6] outline-none "
             id="username"
             placeholder="Amino.."
             // {...register("lastname")}

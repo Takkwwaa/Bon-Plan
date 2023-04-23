@@ -3,15 +3,17 @@ import { login, blacklogo } from "../assets";
 import React, { useState } from "react";
 import authService from "../authService";
 import axios from "../axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const [password, setpassword] = useState("");
   const [email, setemail] = useState("");
-  console.log(password, "fjrkiguh", email);
+  const navigate = useNavigate();
   const handleOnSubmit = async (event) => {
     event.preventDefault();
     const token = await authService.login(email, password);
+    navigate("/profile");
   };
 
   return (
