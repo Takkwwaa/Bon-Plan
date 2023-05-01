@@ -3,10 +3,15 @@ import { useNavigate } from "react-router-dom";
 import authService from "../authService";
 
 const Logout = () => {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
-    authService.logout(); // call the logout function from the auth module
-    // navigate("/"); // redirect the user to the login page
+    try {
+      authService.logout(); // call the logout function from the auth module
+      navigate("/"); // redirect the user to the login page}
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
   }, []);
 
   return (

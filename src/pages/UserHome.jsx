@@ -1,7 +1,13 @@
 import { Content, Sidebar, UserNavbar } from "../components";
 import styles from "../style";
+import React, { useEffect } from "react";
 
 const UserHome = () => {
+  const t = localStorage.getItem("token");
+  useEffect(() => {
+    console.log(t);
+  }, []);
+
   return (
     <div className=" w-screen bg-[#101010] h-screen relative overflow-x-hidden">
       <div

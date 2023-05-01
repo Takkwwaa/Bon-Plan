@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import { Outlet } from "react-router-dom";
-import UserNavbar from "./UserNavbar";
+import { UserContext } from "../UserContext";
 
 export default function MainLayout() {
-  return <Outlet />;
+  const [user, setUser] = useState(null);
+
+  const providerValue = useMemo;
+  {
+    () => [user, setUser], [user, setUser];
+  }
+  return (
+    <UserContext.Provider value={providerValue}>
+      <Outlet />
+    </UserContext.Provider>
+  );
 }

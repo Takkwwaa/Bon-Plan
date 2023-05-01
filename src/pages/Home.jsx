@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Hero, ItemsList, Navbar, Footer } from "../components";
 import styles from "../style";
 import { Outlet } from "react-router-dom";

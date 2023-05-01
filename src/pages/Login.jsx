@@ -1,19 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login, blacklogo } from "../assets";
-import React, { useState } from "react";
-import authService from "../authService";
+import React, { useContext, useState } from "react";
 import axios from "../axios";
-import { useNavigate } from "react-router-dom";
+import authService from "../authService";
+// import { UserContext } from "../UserContext";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const [password, setpassword] = useState("");
   const [email, setemail] = useState("");
   const navigate = useNavigate();
+  // const [user, setUser] = useContext(UserContext);
+  const [data, setData] = useState("");
+
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-    const token = await authService.login(email, password);
-    navigate("/profile");
+    try {
+      const token = await authService.login(email, password);
+      console.log(token);
+      // return response.data;
+      const user = await authService.fetchUserProfile();
+      console.log(user);
+      // let dataa = "{ ";
+      // for (const prop in user) {
+      //   dataa += `${prop}: ${user[prop]}, `;
+      // }
+      // dataa = dataa.slice(0, -2);
+      // dataa += " }";
+      // setData(dataa);
+      // console.log(dataa);
+      // useEffect(() => {
+      //   setUser(data);
+      // }, [data]);
+      const obj = JSON.parse(JSON.stringify(user));
+      console.log(obj);
+      // setUser("hahaha");
+      navigate(`/profile/${user.username}`); // navigate to the user's profile page using their user ID
+      // window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -34,10 +60,10 @@ const Login = () => {
                 onSubmit={handleOnSubmit}
               >
                 <input
-                  type="email"
+                  type="text"
                   className=" pl-1 mb-6 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
                   id="exampleInputEmail1"
-                  placeholder="Enter email"
+                  placeholder="Enter username"
                   onChange={(e) => setemail(e.target.value)}
                 />
                 <input

@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Home } from "../pages";
+import { UserContext } from "../UserContext";
+
 function LogLayout() {
+  const [user, setUser] = useState(null);
+
+  const providerValue = useMemo;
+  {
+    () => [user, setUser], [user, setUser];
+  }
   return (
-    <div>
+    <UserContext.Provider value={providerValue}>
       <Outlet />
-    </div>
+    </UserContext.Provider>
   );
 }
 

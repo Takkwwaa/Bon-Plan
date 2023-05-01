@@ -1,10 +1,12 @@
 import styles from "../style";
 import { ItemsList, UserInfoUpdate, UserNavbar } from "../components";
 import { user } from "../assets";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../UserContext";
 
 const UserProfile = () => {
   const [showForum, setShowForum] = useState(false);
+  const msg = useContext(UserContext);
   const handleButton = () => {
     setShowForum(true);
   };
@@ -50,7 +52,7 @@ const UserProfile = () => {
           <h5 className="pb-1 m:text-lg text-base font-arimo text-primary ">
             User Name
           </h5>
-          <p className="pb-3 sm:text-sm text-xs"> Amino</p>
+          <p className="pb-3 sm:text-sm text-xs"> {msg.username}</p>
 
           <div className="flex justify-center">
             <button

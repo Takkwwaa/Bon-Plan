@@ -51,11 +51,11 @@ const UserNavbar = (props) => {
             <div
               className={`flex p-2 pl-4 bg-black border border-white absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
             >
-              <ul className="list-none flex justify-start items-start flex-1 flex-col">
-                <Link to="/profile">
+              <ul className="list-none flex justify-center items-start flex-1 flex-col">
+                <Link to="/profile/:id">
                   <li
                     className={
-                      "flex flex-1 font-poppins font-normal cursor-pointer text-[16px] text-white mb-4 hover:border hover:border-white hover:bg-gray"
+                      "flex flex-1 font-poppins font-normal cursor-pointer text-[16px] text-white mb-4 mt-2 hover:text-primary"
                     }
                   >
                     Profile
@@ -64,7 +64,7 @@ const UserNavbar = (props) => {
                 <Link to="/Logout">
                   <li
                     className={
-                      "font-poppins font-normal cursor-pointer text-[16px] text-white mb-4"
+                      "font-poppins font-normal cursor-pointer text-[16px] text-white mb-2 hover:text-primary"
                     }
                   >
                     Logout

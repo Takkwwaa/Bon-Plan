@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const App = () => {
   const token = localStorage.getItem("token");
-  console.log(token);
+
   return <RouterProvider router={token ? Authenticated : Unauthenticated} />;
 };
 export default App;
