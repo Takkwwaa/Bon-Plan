@@ -29,6 +29,10 @@ import phone from "./phone.svg";
 import notification from "./notification.svg";
 import blackuser from "./blackuser.svg";
 import home from "./home.svg";
+import whitebill from "./whitebill.svg";
+import yellowbill from "./yellowbill.svg";
+import love from "./love.svg";
+import redlove from "./redlove.svg";
 
 export {
   Logo,
@@ -62,4 +66,8 @@ export {
   blackuser,
   notification,
   home,
+  whitebill,
+  yellowbill,
+  love,
+  redlove,
 };

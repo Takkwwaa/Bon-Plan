@@ -461,3 +461,9 @@ export const regions = [
   { value: "Tozeur", table: { Tozeur } },
   { value: "Zaghouan", table: { Zaghouan } },
 ];
+export const photos = [
+  burgerking,
+  crepefactory,
+  farmRanchPizza,
+  campAbdelmoula,
+];

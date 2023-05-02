@@ -16,7 +16,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className=" w-screen bg-[#101010] h-screen  overflow-x-hidden ">
+    <div className=" w-screen bg-[#101010] h-screen overflow-x-hidden ">
       <div className={`${styles.paddingX} ${styles.flexCenter} bg-secondary `}>
         <div className={`w-full `}>
           <UserNavbar showhome="true" />

@@ -5,5 +5,15 @@ import SignupStore from "./SignupStore.jsx";
 import LoginStore from "./LoginStore.jsx";
 import UserProfile from "./UserProfile.jsx";
 import UserHome from "./UserHome.jsx";
+import StoreInterface from "./StoreInterface.jsx";
 
-export { Home, Login, Signup, SignupStore, LoginStore, UserProfile, UserHome };
+export {
+  Home,
+  Login,
+  Signup,
+  SignupStore,
+  LoginStore,
+  UserProfile,
+  UserHome,
+  StoreInterface,
+};

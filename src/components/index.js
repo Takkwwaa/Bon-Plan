@@ -15,6 +15,11 @@ import DropDownLocalisation from "./DropDownLocalisation.jsx";
 import Content from "./Content.jsx";
 import StoreCard from "./StoreCard.jsx";
 import UserInfoUpdate from "./UserInfoUpdate.jsx";
+import Rate from "./Rating.jsx";
+import Galerie from "./Galerie.jsx";
+import Photo from "./Photo.jsx";
+import Head from "./Head.jsx";
+import FeedBacks from "./Feedbacks.jsx";
 
 export {
   Hero,
@@ -34,4 +39,9 @@ export {
   DropDownLocalisation,
   StoreCard,
   UserInfoUpdate,
+  Head,
+  Rate,
+  Galerie,
+  Photo,
+  FeedBacks,
 };
