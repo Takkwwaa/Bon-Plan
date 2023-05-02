@@ -19,7 +19,8 @@ import Rate from "./Rating.jsx";
 import Galerie from "./Galerie.jsx";
 import Photo from "./Photo.jsx";
 import Head from "./Head.jsx";
-import FeedBacks from "./Feedbacks.jsx";
+import Feedbacks from "./Feedbacks.jsx";
+import FeedbackForum from "./FeedbackForum.jsx";
 
 export {
   Hero,
@@ -43,5 +44,6 @@ export {
   Rate,
   Galerie,
   Photo,
-  FeedBacks,
+  Feedbacks,
+  FeedbackForum,
 };

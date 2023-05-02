@@ -1,10 +1,10 @@
 import { Rate, ItemsList } from ".";
-import { love, whitebill, yellowbill, redlove } from "../assets";
+import { love, whitebill, yellowbill, redlove, done } from "../assets";
 import React, { useState } from "react";
 
 const Head = () => {
   const [loveClick, setLoveClick] = useState(false);
-  const [billClick, setBillClick] = useState(false);
+  const [followClick, setFollowClick] = useState(false);
   return (
     <div className=" flex flex-col ">
       <div className="text-white flex flex-row justify-between items-center">
@@ -12,15 +12,23 @@ const Head = () => {
           Store name
         </h1>
         <div className="flex justify-center items-center gap-6">
-          <img
-            src={billClick ? yellowbill : whitebill}
-            alt="bill"
-            className="sm:w-6 sm:h-6 h-4 w-4 "
-            onClick={() => {
-              setBillClick((prev) => !prev);
-            }}
-          />
-
+          <div className="flex justify-center items-center gap-2">
+            <img
+              src={done}
+              alt="love"
+              className={`${
+                followClick ? "block" : "hidden"
+              } sm:w-6 sm:h-6 w-4 h-4`}
+            />
+            <a
+              className={`text-xl hover:text-[#fefc8e] visited:text-[#fefc8e] decoration-none `}
+              onClick={() => {
+                setFollowClick((prev) => !prev);
+              }}
+            >
+              Follow
+            </a>
+          </div>
           <img
             src={loveClick ? redlove : love}
             alt="love"
@@ -31,8 +39,8 @@ const Head = () => {
           />
         </div>
       </div>
-      <div className="flex items-center space-x-2 pb-5">
-        <Rate />
+      <div className="flex items-center pb-5">
+        <Rate title="Global Rate : " maxRating={5} />
       </div>
       <div className=" sm:w-1/2 w-full">
         <p className=" text-poppins sm:text-lg text-base text-white ">

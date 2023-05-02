@@ -1,13 +1,22 @@
 import styles from "../style";
 import {
-  FeedBacks,
+  FeedbackForum,
+  Feedbacks,
   Galerie,
   Head,
   UserInfoUpdate,
   UserNavbar,
 } from "../components";
+import React, { useState } from "react";
 
 const StoreInterface = () => {
+  const [showFeedbackForum, setShowFeedbackForum] = useState(false);
+  const handleFeedbackClick = () => {
+    setShowFeedbackForum(true);
+  };
+  const handleClose = () => {
+    setShowFeedbackForum(false);
+  };
   return (
     <div className=" w-screen bg-[#101010] h-screen overflow-y-scroll overflow-x-hidden ">
       <div className={`${styles.paddingX} ${styles.flexCenter} bg-secondary `}>
@@ -29,11 +38,13 @@ const StoreInterface = () => {
         <button
           className="p-1 px-2 sm:text-lg text-base font-arimo  text-white border bg-primary border-primary leading-3 rounded-md w-auto h-10 "
           type="submit"
+          onClick={handleFeedbackClick}
         >
           GIVE FEEDBACK
         </button>
+        {showFeedbackForum && <FeedbackForum onClose={handleClose} />}
         <div>
-          <FeedBacks />
+          <Feedbacks />
         </div>
       </div>
     </div>

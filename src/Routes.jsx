@@ -53,7 +53,7 @@ export const Authenticated = createBrowserRouter([
         element: <Logout />,
       },
       {
-        path: "/store/:name",
+        path: "/storeinterface/:name",
         element: <StoreInterface />,
       },
     ],

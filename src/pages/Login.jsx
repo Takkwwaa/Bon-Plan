@@ -3,14 +3,14 @@ import { login, blacklogo } from "../assets";
 import React, { useContext, useState } from "react";
 import axios from "../axios";
 import authService from "../authService";
-// import { UserContext } from "../UserContext";
+import { UserContext } from "../UserContext";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const [password, setpassword] = useState("");
   const [email, setemail] = useState("");
   const navigate = useNavigate();
-  // const [user, setUser] = useContext(UserContext);
+  const [user, setUser] = useContext(UserContext);
   const [data, setData] = useState("");
 
   const handleOnSubmit = async (event) => {
@@ -18,9 +18,8 @@ const Login = () => {
     try {
       const token = await authService.login(email, password);
       console.log(token);
-      // return response.data;
       const user = await authService.fetchUserProfile();
-      console.log(user);
+      console.log("the user value :  ", user);
       // let dataa = "{ ";
       // for (const prop in user) {
       //   dataa += `${prop}: ${user[prop]}, `;
@@ -32,10 +31,13 @@ const Login = () => {
       // useEffect(() => {
       //   setUser(data);
       // }, [data]);
-      const obj = JSON.parse(JSON.stringify(user));
-      console.log(obj);
-      // setUser("hahaha");
-      navigate(`/profile/${user.username}`); // navigate to the user's profile page using their user ID
+
+      const obj = JSON.toString(user);
+      // console.log(typeof obj[Symbol.iterator]);
+      console.log("the obj value :  ", obj);
+
+      setUser(user);
+      //navigate(`/profile/${user.username}`); // navigate to the user's profile page using their user ID
       // window.location.reload();
     } catch (error) {
       console.error(error);

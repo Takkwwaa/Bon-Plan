@@ -1,5 +1,5 @@
-const FeedBacks = () => {
+const Feedbacks = () => {
   return <div>FeedBacks</div>;
 };
 
-export default FeedBacks;
+export default Feedbacks;

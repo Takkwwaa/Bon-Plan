@@ -33,6 +33,7 @@ import whitebill from "./whitebill.svg";
 import yellowbill from "./yellowbill.svg";
 import love from "./love.svg";
 import redlove from "./redlove.svg";
+import done from "./done.svg";
 
 export {
   Logo,
@@ -70,4 +71,5 @@ export {
   yellowbill,
   love,
   redlove,
+  done,
 };
