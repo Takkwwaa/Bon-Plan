@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Logo, user, notification, home } from "../assets";
-
+import { Logo, User, notification, home } from "../assets";
 import Searchbar from "./Searchbar.jsx";
 import { Link } from "react-router-dom";
 
@@ -43,7 +42,7 @@ const UserNavbar = (props) => {
           }
         >
           <img
-            src={user}
+            src={User}
             className=" rounded-full border border-white w-12 h-12 p-1"
             onClick={() => setToggle((prev) => !prev)}
           />
@@ -100,7 +99,7 @@ const UserNavbar = (props) => {
         >
           <Link to="/profile">
             <img
-              src={user}
+              src={User}
               className=" rounded-full border border-white w-10 h-10 p-1"
             />
           </Link>

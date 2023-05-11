@@ -11,15 +11,15 @@ const ItemsList = () => {
         Top rated
       </h5>
       <div
-        className={`flex justify-between items-center flex-row pt-2 pb-2 border border-primary rounded-lg h-[340px] overflow-hidden ${styles.boxWidth}`}
+        className={`flex justify-center gap-4 items-center flex-row pt-2 border border-primary rounded-lg h-[340px] overflow-x-auto ${styles.boxWidth}`}
       >
-        <div className=" w-24 h-full flex justify-center items-center hover:cursor-pointer ">
-          <img src={leftForward} className="z-10" />
+        <div className=" w-24 h-full flex justify-center items-center hover:cursor-pointer z-50 ">
+          <img src={leftForward} />
         </div>
         <StoreCard />
-        <div className=" w-24 h-full  flex justify-center items-center  hover:cursor-pointer ">
+        <div className=" w-24 h-full flex justify-center items-center hover:cursor-pointer z-50 ">
           {" "}
-          <img src={rightForward} alt="" className="z-10" />
+          <img src={rightForward} alt="" />
         </div>
       </div>
     </div>

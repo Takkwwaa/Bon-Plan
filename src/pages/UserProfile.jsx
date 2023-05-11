@@ -1,12 +1,12 @@
 import styles from "../style";
 import { ItemsList, UserInfoUpdate, UserNavbar } from "../components";
-import { user } from "../assets";
-import React, { useState, useContext } from "react";
+import { User } from "../assets";
+import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 
 const UserProfile = () => {
   const [showForum, setShowForum] = useState(false);
-  const msg = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const handleButton = () => {
     setShowForum(true);
   };
@@ -27,7 +27,7 @@ const UserProfile = () => {
       >
         <div className=" flex items-center justify-center w-[40%] ">
           <img
-            src={user}
+            src={User}
             className=" rounded-full border border-white sm:w-40 sm:h-40 w-20 h-20 p-1"
           />
         </div>
@@ -52,7 +52,10 @@ const UserProfile = () => {
           <h5 className="pb-1 m:text-lg text-base font-arimo text-primary ">
             User Name
           </h5>
-          <p className="pb-3 sm:text-sm text-xs"> {msg.username}</p>
+          <p className="pb-3 sm:text-sm text-xs text-white">
+            {" "}
+            {user ? user.username : null}
+          </p>
 
           <div className="flex justify-center">
             <button

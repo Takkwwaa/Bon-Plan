@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setpassword] = useState("");
   const [email, setemail] = useState("");
   const navigate = useNavigate();
-  const [user, setUser] = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [data, setData] = useState("");
 
   const handleOnSubmit = async (event) => {
@@ -18,7 +18,7 @@ const Login = () => {
     try {
       const token = await authService.login(email, password);
       console.log(token);
-      const user = await authService.fetchUserProfile();
+      const userr = await authService.fetchUserProfile();
       console.log("the user value :  ", user);
       // let dataa = "{ ";
       // for (const prop in user) {
@@ -32,12 +32,17 @@ const Login = () => {
       //   setUser(data);
       // }, [data]);
 
-      const obj = JSON.toString(user);
+      // const obj = JSON.toString(user);
       // console.log(typeof obj[Symbol.iterator]);
-      console.log("the obj value :  ", obj);
+      // console.log("the obj value :  ", obj);
 
-      setUser(user);
-      //navigate(`/profile/${user.username}`); // navigate to the user's profile page using their user ID
+      // const object = JSON.parse(obj);
+      // console.log("the object value :  ", object);
+
+      await setUser(userr);
+      await console.log(user);
+      navigate(`/profile/${user.username}`); // navigate to the user's profile page using their user ID
+
       // window.location.reload();
     } catch (error) {
       console.error(error);

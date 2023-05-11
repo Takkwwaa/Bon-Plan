@@ -33,17 +33,17 @@ const StoreInterface = () => {
         </div>
       </div>
       <div
-        className={`sm:px-20 px-8 mt-5 flex flex-row items-center text-white justify-between`}
+        className={`sm:px-20 px-8 mt-5 flex sm:flex-row flex-col gap-4 items-start text-white justify-between pb-6`}
       >
         <button
-          className="p-1 px-2 sm:text-lg text-base font-arimo  text-white border bg-primary border-primary leading-3 rounded-md w-auto h-10 "
+          className="p-1 px-2 sm:text-lg text-xs font-arimo text-white border bg-primary border-primary leading-3 rounded-md w-auto sm:h-10 h-8  "
           type="submit"
           onClick={handleFeedbackClick}
         >
           GIVE FEEDBACK
         </button>
         {showFeedbackForum && <FeedbackForum onClose={handleClose} />}
-        <div>
+        <div className=" sm:w-2/4 w-full">
           <Feedbacks />
         </div>
       </div>

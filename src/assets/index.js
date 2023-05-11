@@ -5,7 +5,7 @@ import search from "./search.png";
 import burger from "./burger.jpg";
 import store from "./store.png";
 import userr from "./user.png";
-import user from "./user.svg";
+import User from "./user.svg";
 import closeblack from "./closeblack.svg";
 import signup from "./signup.svg";
 import login from "./login.svg";
@@ -41,7 +41,7 @@ export {
   close,
   search,
   burger,
-  user,
+  User,
   store,
   closeblack,
   login,
