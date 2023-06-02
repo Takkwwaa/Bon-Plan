@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <UserContext.Provider value={providerValue}>
-      <RouterProvider router={true ? Authenticated : Unauthenticated} />
+      <RouterProvider router={false ? Authenticated : Unauthenticated} />
     </UserContext.Provider>
   );
 };

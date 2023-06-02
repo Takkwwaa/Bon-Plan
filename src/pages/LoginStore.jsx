@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { login, blacklogo } from "../assets";
+import { useState } from "react";
 const LoginStore = () => {
+  const handleOnSubmit = () => {};
   return (
     <>
       <img
@@ -14,7 +16,10 @@ const LoginStore = () => {
               <h1 className=" font-arimo font-bold text-2xl flex align-middle justify-center py-8 text-white tracking-widest ">
                 Login
               </h1>
-              <form className=" flex flex-col justify-center px-8 ">
+              <form
+                className=" flex flex-col justify-center px-8 "
+                onSubmit={handleOnSubmit}
+              >
                 <input
                   type="email"
                   className=" pl-1 mb-6 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"

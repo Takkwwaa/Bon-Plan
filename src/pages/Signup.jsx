@@ -180,7 +180,7 @@ const Signup = () => {
                         fill="currentFill"
                       />
                     </svg>
-                    <span class="sr-only text-primary">Loading...</span>
+                    <span className="sr-only text-primary">Loading...</span>
                   </div>
                 )}
                 <button

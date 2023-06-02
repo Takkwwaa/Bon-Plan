@@ -19,7 +19,7 @@ const StoreCard = () => {
     <>
       {items.map((item, index) => (
         <div
-          className=" bg-white rounded-md sm:h-72 h-48 sm:w-48 w-28 flex justify-start items-center flex-col sm:pt-4 pt-2"
+          className=" bg-white rounded-md sm:h-72 h-48 sm:w-48 w-28 flex justify-start items-center flex-col sm:pt-4 pt-2 cursor-pointer hover:shadow-xl shadow-white"
           key={item.id}
         >
           <div className=" w-5/6 h-32 ">

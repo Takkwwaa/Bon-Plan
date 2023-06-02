@@ -19,29 +19,10 @@ const Login = () => {
       const token = await authService.login(email, password);
       console.log(token);
       const userr = await authService.fetchUserProfile();
-      console.log("the user value :  ", user);
-      // let dataa = "{ ";
-      // for (const prop in user) {
-      //   dataa += `${prop}: ${user[prop]}, `;
-      // }
-      // dataa = dataa.slice(0, -2);
-      // dataa += " }";
-      // setData(dataa);
-      // console.log(dataa);
-      // useEffect(() => {
-      //   setUser(data);
-      // }, [data]);
-
-      // const obj = JSON.toString(user);
-      // console.log(typeof obj[Symbol.iterator]);
-      // console.log("the obj value :  ", obj);
-
-      // const object = JSON.parse(obj);
-      // console.log("the object value :  ", object);
-
+      console.log("the user value :  ", userr);
       await setUser(userr);
-      await console.log(user);
-      navigate(`/profile/${user.username}`); // navigate to the user's profile page using their user ID
+      await console.log(user.userName);
+      navigate(`/profile/${user.userName}`); // navigate to the user's profile page using their user ID
 
       // window.location.reload();
     } catch (error) {
@@ -70,7 +51,7 @@ const Login = () => {
                   type="text"
                   className=" pl-1 mb-6 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
                   id="exampleInputEmail1"
-                  placeholder="Enter username"
+                  placeholder="Enter email"
                   onChange={(e) => setemail(e.target.value)}
                 />
                 <input

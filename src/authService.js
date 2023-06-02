@@ -1,12 +1,12 @@
 import jwtDecode from "jwt-decode";
 import axios from "./axios";
 
-const REGISTER_URL = "/api/login";
-const login = async (username, password) => {
+const REGISTER_URL = "/auth";
+const login = async (email, password) => {
   const response = await axios.post(
     REGISTER_URL,
     JSON.stringify({
-      username,
+      email,
       password,
     }),
     { headers: { "Content-Type": "application/json" } }

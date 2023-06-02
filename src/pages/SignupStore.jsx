@@ -45,7 +45,7 @@ const SignupStore = () => {
         JSON.stringify({
           name,
           description,
-          phone: parseInt(phone),
+          phone: phone,
           email,
           password,
         }),
@@ -145,6 +145,7 @@ const SignupStore = () => {
                   <input
                     className=" pl-1 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
                     placeholder="Enter Password"
+                    type="password"
                     {...register("password")}
                   />
                   {errors?.password ? (

@@ -1,12 +1,12 @@
 import styles from "../style";
 import { ItemsList, UserInfoUpdate, UserNavbar } from "../components";
 import { User } from "../assets";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../UserContext";
 
 const UserProfile = () => {
   const [showForum, setShowForum] = useState(false);
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const handleButton = () => {
     setShowForum(true);
   };
@@ -14,7 +14,7 @@ const UserProfile = () => {
   const handleClose = () => {
     setShowForum(false);
   };
-
+  console.log(user);
   return (
     <div className=" w-screen bg-[#101010] h-screen overflow-x-hidden ">
       <div className={`${styles.paddingX} ${styles.flexCenter} bg-secondary `}>
@@ -54,7 +54,7 @@ const UserProfile = () => {
           </h5>
           <p className="pb-3 sm:text-sm text-xs text-white">
             {" "}
-            {user ? user.username : null}
+            {user ? user.userName : "d*hbcehj"}
           </p>
 
           <div className="flex justify-center">
