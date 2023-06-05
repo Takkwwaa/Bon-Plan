@@ -51,7 +51,7 @@ const UserNavbar = (props) => {
               className={`flex p-2 pl-4 bg-black border border-white absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
             >
               <ul className="list-none flex justify-center items-start flex-1 flex-col">
-                <Link to="/profile/:id">
+                <Link to="/profile">
                   <li
                     className={
                       "flex flex-1 font-poppins font-normal cursor-pointer text-[16px] text-white mb-4 mt-2 hover:text-primary"

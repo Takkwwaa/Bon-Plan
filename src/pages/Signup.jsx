@@ -40,12 +40,12 @@ const Signup = () => {
       .post(
         REGISTER_URL,
         JSON.stringify({
-          username: username,
-          firstname: firstname,
-          lastname: lastname,
-          birthdate: birthdate,
+          userName: username,
+          firstName: firstname,
+          lastName: lastname,
+          birthDate: birthdate,
           email,
-          plainPassword: password,
+          password: password,
         }),
         { headers: { "Content-Type": "application/json" } }
       )

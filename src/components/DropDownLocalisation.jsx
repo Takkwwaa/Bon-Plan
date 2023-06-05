@@ -3,14 +3,15 @@ import React, { useState } from "react";
 import { options } from "../constants";
 import DropDownRegions from "./DropDownRegions";
 
-const DropDownLocalisation = () => {
-  const [region, setRegion] = useState("");
+const DropDownLocalisation = ({ onChange, onRegionChange }) => {
+  const [city, setCity] = useState("");
   const [showregion, setShowRegion] = useState(false);
   const handleSelect = (selectedOption) => {
-    setRegion(selectedOption.value);
+    setCity(selectedOption.value);
+    onChange(selectedOption);
     setShowRegion(true);
   };
-
+  console.log("from dropdownLocalisation", city);
   return (
     <div className="m-0 flex gap-4">
       <div className=" w-[85%] text-white ">
@@ -61,7 +62,7 @@ const DropDownLocalisation = () => {
           }}
         />
       </div>{" "}
-      {showregion && <DropDownRegions city={region} />}
+      {showregion && <DropDownRegions city={city} onChange={onRegionChange} />}
     </div>
   );
 };

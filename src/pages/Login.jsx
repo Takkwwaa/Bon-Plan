@@ -11,7 +11,6 @@ const Login = () => {
   const [email, setemail] = useState("");
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
-  const [data, setData] = useState("");
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
@@ -22,9 +21,9 @@ const Login = () => {
       console.log("the user value :  ", userr);
       await setUser(userr);
       await console.log(user.userName);
-      navigate(`/profile/${user.userName}`); // navigate to the user's profile page using their user ID
+      navigate(`/profile`); // navigate to the user's profile page using their user ID
 
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       console.error(error);
     }

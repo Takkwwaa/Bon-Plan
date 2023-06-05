@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { regions } from "../constants";
 import Select from "react-select";
 
-export default function DropDownRegions(city) {
+export default function DropDownRegions({ city, onChange }) {
+  const [region, setRegion] = useState("");
   console.log(typeof city);
-  console.log(city.city);
-  var arr = regions.find(({ value }) => value === city.city);
+  console.log(city);
+  var arr = regions.find(({ value }) => value === city);
   console.log(regions.find((value) => value === city));
-  const options = arr.table[city.city];
+  const options = arr.table[city];
   console.log("region table :", options);
+  const handleSelect = (selectedOption) => {
+    setRegion(selectedOption.value);
+    onChange(selectedOption.value);
+  };
+  console.log("from dropdownRegion", region);
   return (
     <div className=" w-[85%] text-white">
       <Select
         options={options}
         placeholder="Region"
+        onChange={handleSelect}
         styles={{
           option: (provided, state) => ({
             ...provided,

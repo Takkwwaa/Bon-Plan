@@ -2,21 +2,86 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { store, userr, close } from "../assets";
 import DropDownLocalisation from "./DropDownLocalisation";
+import axios from "../axios";
+import jwtDecode from "jwt-decode";
 
 const UserInfoUpdate = (props) => {
-  const [target, setTarget] = useState("");
+  const [genderr, setGender] = useState("");
+  const [username, setUsername] = useState(""); // State to store the username
+  const [selectedLocalisation, setSelectedLocalisation] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("");
+  const [success, setSuccess] = useState(false);
 
-  const handleUserClick = () => {
-    console.log({ target });
+  const handleLocalisationChange = (selectedLocalisation) => {
+    setSelectedLocalisation(selectedLocalisation);
+    console.log("from update city : ", selectedLocalisation);
   };
 
-  const handleStoreClick = () => {
-    console.log({ target });
+  const handleRegionChange = (selectedRegion) => {
+    setSelectedRegion(selectedRegion);
+    console.log("from update region : ", selectedRegion);
+  };
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    let data = {};
+
+    if (username !== "") {
+      data.userName = username;
+    }
+
+    if (genderr !== "") {
+      data.gender = genderr;
+    }
+
+    console.log(data);
+    try {
+      const token = localStorage.getItem("token");
+      console.log(token);
+      const t = token;
+      const id = jwtDecode(t).id;
+      console.log("hetha id :    ", id);
+
+      const response = await axios.patch(`/api/users/${id}`, data, {
+        headers: {
+          "Content-Type": "application/merge-patch+json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        console.log("User updated successfully");
+        setSuccess(true);
+      } else {
+        console.error("Failed to update user");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    try {
+      await handleSubmit(event); // Await the promise returned by handleSubmit
+
+      // Perform any additional actions upon successful form submission
+    } catch (error) {
+      // Handle the error case
+    }
   };
 
   const handleCloseClick = () => {
     props.onClose();
   };
+
   return ReactDOM.createPortal(
     <div className="fixed inset-0 z-50 flex items-start mt-[10%] justify-center m-4">
       <div className="fixed inset-0 bg-white opacity-5 "></div>
@@ -29,11 +94,18 @@ const UserInfoUpdate = (props) => {
             onClick={handleCloseClick}
           />
         </div>
-        <form action="" className="flex flex-col pl-4 font-poppins text-black ">
+        <form
+          action=""
+          className="flex flex-col pl-4 font-poppins text-black "
+          onSubmit={handleFormSubmit}
+        >
           <h5 className="py-3 sm:text-lg text-base font-arimo text-primary ">
             Address
           </h5>
-          <DropDownLocalisation />
+          <DropDownLocalisation
+            onChange={handleLocalisationChange}
+            onRegionChange={handleRegionChange}
+          />
           <h5 className="py-3 m:text-lg text-base font-arimo text-primary ">
             Gender
           </h5>
@@ -45,7 +117,9 @@ const UserInfoUpdate = (props) => {
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio1"
-                value="option1"
+                value="M"
+                checked={genderr === "M"}
+                onChange={handleGenderChange}
               />
               <label
                 className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-white"
@@ -62,7 +136,9 @@ const UserInfoUpdate = (props) => {
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio2"
-                value="option2"
+                checked={genderr === "F"}
+                value="F"
+                onChange={handleGenderChange}
               />
               <label
                 className="mt-px inline-block pl-[0.15rem] hover:cursor-pointer text-white"
@@ -80,12 +156,18 @@ const UserInfoUpdate = (props) => {
             className=" text-white pl-1 text-sm block min-h-[auto] w-full outline-primary outline-1 outline rounded border-0 bg-secondary py-[0.32rem] leading-[1.6] outline-none "
             id="username"
             placeholder="Amino.."
+            onChange={handleUsernameChange}
             // {...register("lastname")}
             autoComplete="off"
           />{" "}
-          <div className="flex justify-end mt-5">
+          <div className="flex justify-end flex-row mt-5 items-center">
+            {success ? (
+              <p className="flex-1 justify-center  align-middle pl-[0.15rem] hover:cursor-pointer text-[#41ad49]">
+                Success !
+              </p>
+            ) : null}
             <button
-              className="p-1 px-2 text-sm text-primary border border-primary rounded-md w-auto h-9 "
+              className=" p-1 px-2 text-sm text-primary border border-primary rounded-md w-auto h-9 "
               type="submit"
             >
               Confirm

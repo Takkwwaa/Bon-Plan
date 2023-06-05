@@ -45,7 +45,7 @@ export const Authenticated = createBrowserRouter([
         element: <UserHome />,
       },
       {
-        path: "/profile/:id",
+        path: "/profile",
         element: <UserProfile />,
       },
       {
