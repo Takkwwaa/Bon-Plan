@@ -1,8 +1,42 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login, blacklogo } from "../assets";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import authStore from "../authStore";
+import { UserContext } from "../UserContext";
+
 const LoginStore = () => {
-  const handleOnSubmit = () => {};
+  const [password, setpassword] = useState("");
+  const [email, setemail] = useState("");
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleOnSubmit = async () => {
+    event.preventDefault();
+    try {
+      const id = await authStore.checkStore(email, password);
+      if (id) {
+        const storeData = await authStore.fetchStore(id);
+        // Do something with the retrieved store data
+        console.log(storeData);
+        navigate(`/store/profile`);
+        window.location.reload();
+      } else {
+        console.log("User does not exist");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  // ...
+
+  // UseEffect to update the user context when the user data changes
+  useEffect(() => {
+    if (user) {
+      // User data has changed, update the user context
+      setUser(user);
+    }
+  }, [user, setUser]);
   return (
     <>
       <img
@@ -25,12 +59,14 @@ const LoginStore = () => {
                   className=" pl-1 mb-6 text-sm block min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
                   id="exampleInputEmail1"
                   placeholder="Enter email"
+                  onChange={(e) => setemail(e.target.value)}
                 />
                 <input
                   type="password"
                   className=" pl-1 mb-12 block text-sm min-h-[auto] w-full rounded border-0 bg-[#ffffff] py-[0.32rem] leading-[1.6] outline-none focus:outline-1 focus:outline-primary"
                   id="exampleInputPassword1"
                   placeholder="Password"
+                  onChange={(e) => setpassword(e.target.value)}
                 />
                 <button
                   type="submit"

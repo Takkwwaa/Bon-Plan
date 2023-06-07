@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { blacklogo, signup } from "../assets";
 import { useState, useRef, useEffect } from "react";
 import axios from "../axios";
@@ -7,10 +6,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ToastContainer, toast } from "react-toastify";
 import { ErrorMessage } from "../components";
+import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const SignupStore = () => {
   const REGISTER_URL = "/api/stores";
+  const navigate = useNavigate();
   const [violations, setViolations] = useState("");
   const [loading, setLoading] = useState(false);
   const [Errors, setErrors] = useState("");
@@ -53,7 +54,7 @@ const SignupStore = () => {
       )
       .then((response) => {
         setLoading(false);
-
+        navigate("/store/Login");
         console.log("success", response.data);
       })
       .catch((error) => {

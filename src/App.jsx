@@ -3,6 +3,7 @@ import { Unauthenticated, Authenticated } from "./Routes.jsx";
 import { RouterProvider } from "react-router-dom";
 import { UserContext } from "./UserContext.js";
 import authService from "./authService.js";
+import authStore from "./authStore.jsx";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -12,8 +13,15 @@ const App = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const userr = await authService.fetchUserProfile();
-        setUser(userr);
+        if (token && Number.isInteger(parseInt(token))) {
+          // Token is a valid integer
+          console.log("Token is an integer:", parseInt(token));
+          const storeData = await authStore.fetchStore(parseInt(token));
+          setUser(storeData);
+        } else {
+          const userr = await authService.fetchUserProfile();
+          setUser(userr);
+        }
       } catch (error) {
         console.error("Error fetching user data:", error);
       }

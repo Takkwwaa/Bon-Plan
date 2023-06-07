@@ -21,6 +21,9 @@ import Photo from "./Photo.jsx";
 import Head from "./Head.jsx";
 import Feedbacks from "./Feedbacks.jsx";
 import FeedbackForum from "./FeedbackForum.jsx";
+import StoreNavbar from "./StoreNavbar.jsx";
+import FileUploader from "./FileUploader.jsx";
+import StoreInfoUpdate from "./StoreInfoUpdate.jsx";
 
 export {
   Hero,
@@ -46,4 +49,6 @@ export {
   Photo,
   Feedbacks,
   FeedbackForum,
+  StoreNavbar,
+  FileUploader,
 };

@@ -6,6 +6,7 @@ import LoginStore from "./LoginStore.jsx";
 import UserProfile from "./UserProfile.jsx";
 import UserHome from "./UserHome.jsx";
 import StoreInterface from "./StoreInterface.jsx";
+import StoreProfile from "./StoreProfile.jsx";
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   UserProfile,
   UserHome,
   StoreInterface,
+  StoreProfile,
 };

@@ -1,20 +1,32 @@
 import styles from "../style";
-import { ItemsList, UserInfoUpdate, UserNavbar } from "../components";
+import {
+  Galerie,
+  ItemsList,
+  StoreCard,
+  StoreNavbar,
+  UserInfoUpdate,
+  UserNavbar,
+} from "../components";
 import { User } from "../assets";
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import profile from "../profile";
 import axios from "../axios";
+import StoreInfoUpdate from "../components/StoreInfoUpdate";
 
-const UserProfile = () => {
+const StoreProfile = () => {
   const [showForum, setShowForum] = useState(false);
   const { user, setUser } = useContext(UserContext);
   const [localisation, setLocalisation] = useState(false);
   const [imageUrl, setImageUrl] = useState(User);
   useEffect(() => {
+    const fetchlocalisationn = async (loc) => {
+      const response = await axios.get(loc);
+      return response.data;
+    };
     const fetchlocalisation = async () => {
       try {
-        const loc = await profile.fetchlocalisation(user?.localisation);
+        const loc = await fetchlocalisationn(user?.localisation);
         setLocalisation(loc);
         console.log(user);
         console.log(loc);
@@ -43,21 +55,6 @@ const UserProfile = () => {
     //   }
     // };
 
-    axios
-      .get(`api/pictures/${user?.avatar?.id}`)
-      .then((response) => {
-        // Handle the response data
-        console.log(response.data?.imageName);
-        const data =
-          "https://127.0.0.1:8000/images/picture/" + response.data?.imageName;
-        console.log(response.data?.imageName);
-        setImageUrl(data);
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error(error);
-      });
-
     // fetchImage();
     fetchlocalisation();
   }, [user]);
@@ -68,14 +65,12 @@ const UserProfile = () => {
   const handleClose = () => {
     setShowForum(false);
   };
-  const handleAddButtonClick = () => {
-    console.log("button clicked");
-  };
+  console.log(user);
   return (
     <div className=" w-screen bg-[#101010] h-screen overflow-x-hidden ">
       <div className={`${styles.paddingX} ${styles.flexCenter} bg-secondary `}>
         <div className={`w-full `}>
-          <UserNavbar showhome="true" />
+          <StoreNavbar showhome="true" />
         </div>
       </div>
       <div
@@ -88,7 +83,6 @@ const UserProfile = () => {
             className=" rounded-full border border-white sm:w-40 sm:h-40 w-20 h-20 p-1"
           />
         </div>
-
         <div className=" w-[1px] bg-white flex flex-col h-auto "></div>
         <div
           className=" 
@@ -101,25 +95,33 @@ const UserProfile = () => {
             {localisation.city == ""
               ? "localisation not set yet"
               : localisation.city + ", " + localisation.region}{" "}
+            <br />
+            {localisation.adressLine == "" ? null : localisation.adressLine}
           </p>
 
           <h5 className="pb-1 m:text-lg text-base font-arimo text-primary ">
-            Gender
-          </h5>
-          <p className="pb-3 sm:text-sm text-xs">
-            {user?.gender == ""
-              ? "gender not set yet"
-              : user?.gender == "M"
-              ? "Male"
-              : "Female"}
-          </p>
-
-          <h5 className="pb-1 m:text-lg text-base font-arimo text-primary ">
-            User Name
+            Name
           </h5>
           <p className="pb-3 sm:text-sm text-xs text-white">
             {" "}
-            {user ? user?.userName : "d*hbcehj"}
+            {user ? user.name : "d*hbcehj"}
+          </p>
+
+          <h5 className="pb-1 m:text-lg text-base font-arimo text-primary ">
+            Phone
+          </h5>
+          <p className="pb-3 sm:text-sm text-xs text-white">
+            {" "}
+            {user ? user.phone : "d*hbcehj"}
+          </p>
+          <div className="sm:w-[200px] w-full">
+            <h5 className="pb-1 m:text-lg text-base font-arimo text-primary ">
+              description
+            </h5>
+          </div>
+          <p className="pb-3 sm:text-sm text-xs text-white">
+            {" "}
+            {user ? user.description : "d*hbcehj"}
           </p>
 
           <div className="flex justify-center">
@@ -130,14 +132,21 @@ const UserProfile = () => {
               Update
             </button>
             {showForum && (
-              <UserInfoUpdate onClose={handleClose} loc={user?.localisation} />
+              <StoreInfoUpdate onClose={handleClose} loc={user?.localisation} />
             )}
           </div>
         </div>
       </div>
-      <ItemsList />
+      <div className={` ${styles.padding2} flex flex-col gap-5 bg-secondary`}>
+        <div className={` ${styles.padding2}`}>
+          <h5 className="font-poppins font-meduim ss:text-[30px] text-[22px] text-[#FF4747]">
+            Gallery
+          </h5>
+        </div>
+        <Galerie />
+      </div>
     </div>
   );
 };
 
-export default UserProfile;
+export default StoreProfile;

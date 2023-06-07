@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import { store, userr, close } from "../assets";
 import DropDownLocalisation from "./DropDownLocalisation";
 import axios from "../axios";
 import jwtDecode from "jwt-decode";
+import FileUploader from "./FileUploader";
+import { UserContext } from "../UserContext";
 
 const UserInfoUpdate = (props) => {
   const [genderr, setGender] = useState("");
@@ -11,6 +13,14 @@ const UserInfoUpdate = (props) => {
   const [selectedLocalisation, setSelectedLocalisation] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("");
   const [success, setSuccess] = useState(false);
+  const [file, setFile] = useState({});
+  const { user, setUser } = useContext(UserContext);
+
+  const handleFile = (file) => {
+    // Handle the file in the parent component
+    console.log("File uploaded:", file);
+    setFile(file);
+  };
 
   const handleLocalisationChange = (selectedLocalisation) => {
     setSelectedLocalisation(selectedLocalisation);
@@ -39,6 +49,15 @@ const UserInfoUpdate = (props) => {
     if (genderr !== "") {
       data.gender = genderr;
     }
+    let localisation = {};
+
+    if (selectedRegion !== "") {
+      localisation.region = selectedRegion;
+    }
+
+    if (selectedLocalisation !== "") {
+      localisation.city = selectedLocalisation.label;
+    }
 
     console.log(data);
     try {
@@ -46,7 +65,6 @@ const UserInfoUpdate = (props) => {
       console.log(token);
       const t = token;
       const id = jwtDecode(t).id;
-      console.log("hetha id :    ", id);
 
       const response = await axios.patch(`/api/users/${id}`, data, {
         headers: {
@@ -54,6 +72,28 @@ const UserInfoUpdate = (props) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      const res = await axios.patch(props.loc, localisation, {
+        headers: {
+          "Content-Type": "application/merge-patch+json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const formData = new FormData();
+      console.log("File  shih:", file);
+      formData.append("imageFile", file); // Assuming 'file' is the input field name in your form
+
+      // Make a POST request to send data
+      axios
+        .patch(`api/pictures/${user?.avatar?.id}`, formData)
+        .then((response) => {
+          // Handle the response data
+          const data = response.data;
+          console.log(data);
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.error(error);
+        });
 
       if (response.status === 200) {
         console.log("User updated successfully");
@@ -160,6 +200,9 @@ const UserInfoUpdate = (props) => {
             // {...register("lastname")}
             autoComplete="off"
           />{" "}
+          <div className="py-3">
+            <FileUploader handleFile={handleFile} />
+          </div>
           <div className="flex justify-end flex-row mt-5 items-center">
             {success ? (
               <p className="flex-1 justify-center  align-middle pl-[0.15rem] hover:cursor-pointer text-[#41ad49]">

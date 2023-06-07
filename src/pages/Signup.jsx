@@ -36,6 +36,7 @@ const Signup = () => {
   const handleOnSubmit = () => {
     const { email, password, firstname, lastname, birthdate, username } =
       getValues();
+    setLoading(true);
     const response = axios
       .post(
         REGISTER_URL,
