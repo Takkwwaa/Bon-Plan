@@ -27,9 +27,9 @@ const FeedbackForum = (props) => {
             Your Feedback
           </h5>
           <div>
-            <Rate title="Rate Rule name : " maxRating={5} />
-            <Rate title="Rate Rule name : " maxRating={5} />
-            <Rate title="Rate Rule name : " maxRating={5} />
+            <Rate title="Price : " maxRating={5} />
+            <Rate title="Service Quality : " maxRating={5} />
+            <Rate title="Food Quality : " maxRating={5} />
           </div>
           <div>
             {" "}

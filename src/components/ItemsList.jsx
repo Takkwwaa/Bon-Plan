@@ -8,7 +8,7 @@ const ItemsList = () => {
   return (
     <div className={` ${styles.padding2} flex flex-col gap-5 bg-secondary`}>
       <h5 className="font-poppins font-meduim ss:text-[24px] text-[16px] text-[#FF4747]">
-        Top rated
+        Favourite
       </h5>
       <div
         className={`flex justify-center gap-4 items-center flex-row pt-2 border border-primary rounded-lg h-[340px] overflow-x-auto ${styles.boxWidth}`}

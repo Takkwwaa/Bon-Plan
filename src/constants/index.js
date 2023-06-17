@@ -7,6 +7,10 @@ import {
   twitter,
   facebook,
   linkedin,
+  crepe1,
+  crepe2,
+  crepe3,
+  crepe4,
 } from "../assets";
 export const items = [
   {
@@ -50,89 +54,89 @@ export const items = [
     type: "Restaurant",
     address: "Résidence du printemps El mourouj 5, 2074",
   },
-  {
-    id: "6",
-    title: "Crepe Factory",
-    logo: crepefactory,
-    rate: "9.8",
-    type: "Creperie",
-    address: "Ibn Abi Sofien, 15 bis Rue Mouawiya Ibn Abi Sofiene, Ariana 2080",
-  },
-  {
-    id: "7",
-    title: "Farm Ranch",
-    logo: farmRanchPizza,
-    rate: "9.0",
-    type: "Pizzaria",
-    address:
-      "49 Residance el Kods, Avenue Hedi Nouira, Ennasr 2 Ennasr 2، 2037",
-  },
-  {
-    id: "8",
-    title: "Camp Adelmoula",
-    logo: campAbdelmoula,
-    rate: "9.8",
-    type: "Camp",
-    address: "Tembaine",
-  },
-  {
-    id: "9",
-    title: "Burger king",
-    logo: burgerking,
-    rate: "9.9",
-    type: "Restaurant",
-    address: "Résidence du printemps El mourouj 5, 2074",
-  },
-  {
-    id: "10",
-    title: "Crepe Factory",
-    logo: crepefactory,
-    rate: "9.8",
-    type: "Creperie",
-    address: "Ibn Abi Sofien, 15 bis Rue Mouawiya Ibn Abi Sofiene, Ariana 2080",
-  },
-  {
-    id: "11",
-    title: "Farm Ranch",
-    logo: farmRanchPizza,
-    rate: "9.0",
-    type: "Pizzaria",
-    address:
-      "49 Residance el Kods, Avenue Hedi Nouira, Ennasr 2 Ennasr 2، 2037",
-  },
-  {
-    id: "12",
-    title: "Camp Adelmoula",
-    logo: campAbdelmoula,
-    rate: "9.8",
-    type: "Camp",
-    address: "Tembaine",
-  },
-  {
-    id: "14",
-    title: "Crepe Factory",
-    logo: crepefactory,
-    rate: "9.8",
-    type: "Creperie",
-    address: "Ibn Abi Sofien, 15 bis Rue Mouawiya Ibn Abi Sofiene, Ariana 2080",
-  },
-  {
-    id: "15",
-    title: "Farm Ranch",
-    logo: farmRanchPizza,
-    rate: "9.0",
-    type: "Pizzaria",
-    address:
-      "49 Residance el Kods, Avenue Hedi Nouira, Ennasr 2 Ennasr 2، 2037",
-  },
-  {
-    id: "16",
-    title: "Camp Adelmoula",
-    logo: campAbdelmoula,
-    rate: "9.8",
-    type: "Camp",
-    address: "Tembaine",
-  },
+  // {
+  //   id: "6",
+  //   title: "Crepe Factory",
+  //   logo: crepefactory,
+  //   rate: "9.8",
+  //   type: "Creperie",
+  //   address: "Ibn Abi Sofien, 15 bis Rue Mouawiya Ibn Abi Sofiene, Ariana 2080",
+  // },
+  // {
+  //   id: "7",
+  //   title: "Farm Ranch",
+  //   logo: farmRanchPizza,
+  //   rate: "9.0",
+  //   type: "Pizzaria",
+  //   address:
+  //     "49 Residance el Kods, Avenue Hedi Nouira, Ennasr 2 Ennasr 2، 2037",
+  // },
+  // {
+  //   id: "8",
+  //   title: "Camp Adelmoula",
+  //   logo: campAbdelmoula,
+  //   rate: "9.8",
+  //   type: "Camp",
+  //   address: "Tembaine",
+  // },
+  // {
+  //   id: "9",
+  //   title: "Burger king",
+  //   logo: burgerking,
+  //   rate: "9.9",
+  //   type: "Restaurant",
+  //   address: "Résidence du printemps El mourouj 5, 2074",
+  // },
+  // {
+  //   id: "10",
+  //   title: "Crepe Factory",
+  //   logo: crepefactory,
+  //   rate: "9.8",
+  //   type: "Creperie",
+  //   address: "Ibn Abi Sofien, 15 bis Rue Mouawiya Ibn Abi Sofiene, Ariana 2080",
+  // },
+  // {
+  //   id: "11",
+  //   title: "Farm Ranch",
+  //   logo: farmRanchPizza,
+  //   rate: "9.0",
+  //   type: "Pizzaria",
+  //   address:
+  //     "49 Residance el Kods, Avenue Hedi Nouira, Ennasr 2 Ennasr 2، 2037",
+  // },
+  // {
+  //   id: "12",
+  //   title: "Camp Adelmoula",
+  //   logo: campAbdelmoula,
+  //   rate: "9.8",
+  //   type: "Camp",
+  //   address: "Tembaine",
+  // },
+  // {
+  //   id: "14",
+  //   title: "Crepe Factory",
+  //   logo: crepefactory,
+  //   rate: "9.8",
+  //   type: "Creperie",
+  //   address: "Ibn Abi Sofien, 15 bis Rue Mouawiya Ibn Abi Sofiene, Ariana 2080",
+  // },
+  // {
+  //   id: "15",
+  //   title: "Farm Ranch",
+  //   logo: farmRanchPizza,
+  //   rate: "9.0",
+  //   type: "Pizzaria",
+  //   address:
+  //     "49 Residance el Kods, Avenue Hedi Nouira, Ennasr 2 Ennasr 2، 2037",
+  // },
+  // {
+  //   id: "16",
+  //   title: "Camp Adelmoula",
+  //   logo: campAbdelmoula,
+  //   rate: "9.8",
+  //   type: "Camp",
+  //   address: "Tembaine",
+  // },
 ];
 export const socialMedia = [
   {
@@ -157,10 +161,10 @@ export const socialMedia = [
   },
 ];
 export const categories = [
-  { id: "1", name: "Restaurant" },
-  { id: "2", name: "Hotel" },
-  { id: "3", name: "Coffee" },
-  { id: "4", name: "Camp" },
+  { value: "1", label: "Restaurant" },
+  { value: "2", label: "Hotel" },
+  { value: "3", label: "Coffee" },
+  { value: "4", label: "Camp" },
 ];
 export const options = [
   { value: "Tunis", label: "Tunis" },
@@ -461,9 +465,4 @@ export const regions = [
   { value: "Tozeur", table: { Tozeur } },
   { value: "Zaghouan", table: { Zaghouan } },
 ];
-export const photos = [
-  burgerking,
-  crepefactory,
-  farmRanchPizza,
-  campAbdelmoula,
-];
+export const photos = [crepe1, crepe2, crepe3, crepe4];

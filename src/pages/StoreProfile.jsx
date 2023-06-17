@@ -7,7 +7,7 @@ import {
   UserInfoUpdate,
   UserNavbar,
 } from "../components";
-import { User } from "../assets";
+import { User, add, crepefactory } from "../assets";
 import React, { useState, useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 import profile from "../profile";
@@ -79,7 +79,7 @@ const StoreProfile = () => {
         <div className=" flex items-center justify-center w-[40%] ">
           {}
           <img
-            src={imageUrl}
+            src={crepefactory}
             className=" rounded-full border border-white sm:w-40 sm:h-40 w-20 h-20 p-1"
           />
         </div>
@@ -138,10 +138,13 @@ const StoreProfile = () => {
         </div>
       </div>
       <div className={` ${styles.padding2} flex flex-col gap-5 bg-secondary`}>
-        <div className={` ${styles.padding2}`}>
+        <div
+          className={` ${styles.padding2} flex justify-start gap-4 items-center`}
+        >
           <h5 className="font-poppins font-meduim ss:text-[30px] text-[22px] text-[#FF4747]">
             Gallery
           </h5>
+          <img src={add} className=" w-6 h-6 sm:w-7 sm:h-7" />
         </div>
         <Galerie />
       </div>

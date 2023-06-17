@@ -24,6 +24,7 @@ import FeedbackForum from "./FeedbackForum.jsx";
 import StoreNavbar from "./StoreNavbar.jsx";
 import FileUploader from "./FileUploader.jsx";
 import StoreInfoUpdate from "./StoreInfoUpdate.jsx";
+import DropDownCategory from "./DropDownCategory.jsx";
 
 export {
   Hero,
@@ -51,4 +52,5 @@ export {
   FeedbackForum,
   StoreNavbar,
   FileUploader,
+  DropDownCategory,
 };

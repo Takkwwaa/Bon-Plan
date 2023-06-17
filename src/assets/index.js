@@ -34,6 +34,16 @@ import yellowbill from "./yellowbill.svg";
 import love from "./love.svg";
 import redlove from "./redlove.svg";
 import done from "./done.svg";
+import add from "./add.svg";
+import deleteicon from "./deleteicon.svg";
+import crepe1 from "./crepe1.jpg";
+import crepe2 from "./crepe2.jpg";
+import crepe3 from "./crepe3.jpg";
+import crepe4 from "./crepe4.jpg";
+import thumb_up from "./thumb_up.svg";
+import thumb_down from "./thumb_down.svg";
+import thumb_down_colored from "./thumb_down_colored.svg";
+import thumb_up_colored from "./thumb_up_colored.svg";
 
 export {
   Logo,
@@ -72,4 +82,14 @@ export {
   love,
   redlove,
   done,
+  add,
+  deleteicon,
+  crepe1,
+  crepe2,
+  crepe3,
+  crepe4,
+  thumb_down,
+  thumb_up,
+  thumb_down_colored,
+  thumb_up_colored,
 };

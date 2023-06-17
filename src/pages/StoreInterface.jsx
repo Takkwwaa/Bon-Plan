@@ -4,6 +4,7 @@ import {
   Feedbacks,
   Galerie,
   Head,
+  StoreNavbar,
   UserInfoUpdate,
   UserNavbar,
 } from "../components";
@@ -21,7 +22,7 @@ const StoreInterface = () => {
     <div className=" w-screen bg-[#101010] h-screen overflow-y-scroll overflow-x-hidden ">
       <div className={`${styles.paddingX} ${styles.flexCenter} bg-secondary `}>
         <div className={`w-full `}>
-          <UserNavbar showhome="true" />
+          <StoreNavbar showhome="true" />
         </div>
       </div>
       <div className={`sm:px-20 px-8 sm:pt-12 pt-6 pb-3 sm:pb-6  `}>

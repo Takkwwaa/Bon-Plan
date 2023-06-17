@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
-import { Logo, User, notification, home } from "../assets";
+import { Logo, User, notification, home, crepefactory } from "../assets";
 import Searchbar from "./Searchbar.jsx";
 import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import axios from "../axios";
+import max from "../assets/max.jpg";
 
 const StoreNavbar = (props) => {
   const [toggle, setToggle] = useState(false);
@@ -37,7 +38,7 @@ const StoreNavbar = (props) => {
           }
         >
           <img
-            src={User}
+            src={max}
             className=" rounded-full border border-white w-12 h-12 p-1"
             onClick={() => setToggle((prev) => !prev)}
           />
@@ -67,7 +68,7 @@ const StoreNavbar = (props) => {
           }
         >
           <img
-            src={imageUrl}
+            src={max}
             className=" rounded-full border border-white w-10 h-10 p-1"
             onClick={() => setToggle((prev) => !prev)}
           />

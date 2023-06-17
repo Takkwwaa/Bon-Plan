@@ -90,19 +90,19 @@ const Navbar = () => {
       <div
         className={`${
           toggle ? "flex" : "hidden"
-        } p-6 bg-gradient-to-b from-[#787878] to-transparent  absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+        } p-6 bg-black absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar border-solid border-white border-2`}
       >
         <ul className="list-none flex justify-end items-start flex-1 flex-col">
           <li
             className={
-              "font-poppins font-normal cursor-pointer text-[16px] text-black mb-4"
+              "font-poppins font-normal cursor-pointer text-[16px] text-white mb-4"
             }
           >
             <a href={"#contact"}>Contact Us</a>
           </li>
           <li
             className={
-              "font-poppins font-normal cursor-pointer text-[16px] text-black mb-4 border-none"
+              "font-poppins font-normal cursor-pointer text-[16px] text-white mb-4 border-none"
             }
           >
             <button
@@ -118,7 +118,7 @@ const Navbar = () => {
           </li>
           <li
             className={
-              "font-poppins font-normal cursor-pointer text-[16px] text-black mb-0 border-none"
+              "font-poppins font-normal cursor-pointer text-[16px] text-white mb-0 border-none"
             }
           >
             <button

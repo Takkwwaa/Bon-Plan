@@ -2,12 +2,24 @@ import React, { useEffect, useRef, useState } from "react";
 import { close, menu } from "../assets";
 import useMediaQuery from "../hooks/useMediaQuery";
 import DropDownLocalisation from "./DropDownLocalisation";
+import DropDownCategory from "./DropDownCategory";
 
 const Sidebar = () => {
   const [toggle, setToggle] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const ref = useRef();
   const [showsidebar, setShowSideBar] = useState(false);
+  const [selectedLocalisation, setSelectedLocalisation] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("");
+  const handleLocalisationChange = (selectedLocalisation) => {
+    setSelectedLocalisation(selectedLocalisation);
+    console.log("from update city : ", selectedLocalisation);
+  };
+
+  const handleRegionChange = (selectedRegion) => {
+    setSelectedRegion(selectedRegion);
+    console.log("from update region : ", selectedRegion);
+  };
   const handleClick = () => {
     setShowSideBar((s) => !s);
     setToggle((s) => !s);
@@ -54,11 +66,14 @@ const Sidebar = () => {
         </h1>
         <div className=" p-3 border border-primary rounded-md w-[85%] m-0 pb-14">
           <h5 className="font-arimo text-lg text-white pb-3 ">Location :</h5>
-          <DropDownLocalisation />
+          <DropDownLocalisation
+            onChange={handleLocalisationChange}
+            onRegionChange={handleRegionChange}
+          />
         </div>
         <div className=" p-3 border border-primary rounded-md w-[85%] m-0 pb-14">
-          <h5 className="font-arimo text-lg text-white pb-3 ">Category :</h5>
-          <DropDownLocalisation />
+          <h5 className="font-arimo text-lg text-white pb-3 ">Categories :</h5>
+          <DropDownCategory />
         </div>
       </div>
     </div>

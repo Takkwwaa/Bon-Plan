@@ -83,17 +83,57 @@ const UserInfoUpdate = (props) => {
       formData.append("imageFile", file); // Assuming 'file' is the input field name in your form
 
       // Make a POST request to send data
-      axios
-        .patch(`api/pictures/${user?.avatar?.id}`, formData)
+      const pic = await axios
+        .post(`api/pictures`, formData, {
+          headers: {
+            "Content-Type": "application/merge-patch+json",
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then((response) => {
-          // Handle the response data
-          const data = response.data;
-          console.log(data);
+          const picid = `avatar: "/api/pictures/${response.data.id}"`;
+          axios.patch(`/api/users/${id}`, picid, {
+            headers: {
+              "Content-Type": "application/merge-patch+json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          return response;
         })
         .catch((error) => {
           // Handle any errors
           console.error(error);
         });
+      // const responseObject = JSON.parse(pic);
+      // const iid = responseObject["@id"];
+      // const picid = `avatar: "/api/pictures/${iid}"`;
+      // await axios
+      //   .patch(`/api/users/${id}`, picid, {
+      //     headers: {
+      //       "Content-Type": "application/merge-patch+json",
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   })
+      //   .then((response) => {
+      //     // Handle the response data
+      //     // Parse the JSON response
+
+      //     // Access the "id" property
+
+      //     return response;
+      //   })
+      //   .catch((error) => {
+      //     // Handle any errors
+      //     console.error(error);
+      //   });
+
+      console.log(pic?.id);
+      // const resp = await axios.patch(`/api/users/${id}`, picid, {
+      //   headers: {
+      //     "Content-Type": "application/merge-patch+json",
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // });
 
       if (response.status === 200) {
         console.log("User updated successfully");
